@@ -1,5 +1,5 @@
-<?php include_once '../Components/header.php'; ?>
+<?php require '../Components/header.php'; ?>
 
 <div class="text-olive">Hello World</div>
 
-<?php include_once '../Components/footer.php'; ?>
+<?php require '../Components/footer.php'; ?>
