@@ -1,0 +1,14 @@
+/* styles.css */
+:root {
+    --green-color : #3A5743; /* forest green */
+    --olivine-color : #98B06F; /* olive green */
+    --brown-color : #774936; /* wood brown */
+}
+
+.text-green {
+    color: var(--green-color);
+}
+
+.text-olive {
+    color: var(--olivine-color);
+}
