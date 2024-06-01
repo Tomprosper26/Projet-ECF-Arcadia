@@ -1,1 +1,1 @@
-Projet Arcadia ECF Graduate Flutter.
+Ce fichier vous explique comment déployer cette application en local.
