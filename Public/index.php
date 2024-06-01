@@ -1,5 +1,5 @@
-<?php require '/components/header.php'; ?>
+<?php 
+require "../app/autoloader.php";
+Autoloader::register();
 
-<div class="text-olive">Hello World</div>
-
-<?php require '/components/footer.php'; ?>
+?>
