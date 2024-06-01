@@ -1,5 +1,5 @@
-<?php require '../Components/header.php'; ?>
+<?php require '/components/header.php'; ?>
 
 <div class="text-olive">Hello World</div>
 
-<?php require '../Components/footer.php'; ?>
+<?php require '/components/footer.php'; ?>
