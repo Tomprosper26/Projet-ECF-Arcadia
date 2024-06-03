@@ -16,7 +16,6 @@ if ($requestPath === '/') {
     echo "page introuvable";
 }
 
-
 $router->dispatch($requestPath);
 
 ?>

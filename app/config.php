@@ -4,4 +4,4 @@
 
 $dsn="mysql:host=localhost;dbname=zoo";
 $username="root";
-$password="";
+$password="0000";
