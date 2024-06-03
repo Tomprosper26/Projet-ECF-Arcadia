@@ -74,6 +74,45 @@ try {
         ]);
     }
 
+    $users = [
+        ['username' => 'admin@example.com', 'password' => password_hash('adminpass', PASSWORD_DEFAULT), 'nom' => 'José', 'prenom' => 'Dupont', 'role_label' => 'admin'],
+        ['username' => 'employe@example.com', 'password' => password_hash('employepass', PASSWORD_DEFAULT), 'nom' => 'Jonh', 'prenom' => 'Doe', 'role_label' => 'employé'],
+        ['username' => 'vet@example.com', 'password' => password_hash('vetpass', PASSWORD_DEFAULT), 'nom' => 'Jane', 'prenom' => 'Dane', 'role_label' => 'vétérinaire']
+    ];
+
+    $stmt = $pdo->prepare("INSERT INTO user (username, password, nom, prenom, role_id) VALUES (:username, :password, :nom, :prenom, :role_id)");
+    foreach ($users as $user) {
+        $roleId = $pdo->query("SELECT id FROM role WHERE label = '{$user['role_label']}'")->fetchColumn();
+        $stmt->execute([
+            'username' => $user['username'],
+            'password' => $user['password'],
+            'nom' => $user['nom'],
+            'prenom' => $user['prenom'],
+            'role_id' => $roleId
+        ]);
+    }
+
+    $services = [
+        ['nom' => 'Restauration', 'description' => 'Service de restauration avec divers plats et boissons disponibles.', 'prix' => 15.00],
+        ['nom' => 'Visite Guidée', 'description' => 'Visite guidée gratuite pour découvrir les différents animaux du zoo.', 'prix' => NULL],
+        ['nom' => 'Visite en Petit Train', 'description' => 'Tour en petit train pour explorer le zoo.', 'prix' => 5.00]
+    ];
+
+    $stmt = $pdo->prepare("INSERT INTO service (nom, description, prix) VALUES (:nom, :description, :prix)");
+    foreach ($services as $service) {
+        $stmt->execute($service);
+    }
+
+    $avis = [
+        ['pseudo' => 'JohnDoe', 'commentaire' => 'Très belle visite, les enfants ont adoré!', 'is_visible' => false],
+        ['pseudo' => 'Visitor123', 'commentaire' => 'Les animaux semblaient bien traités, bonne expérience.', 'is_visible' => false]
+    ];
+
+    $stmt = $pdo->prepare("INSERT INTO avis (pseudo, commentaire, is_visible) VALUES (:pseudo, :commentaire, :is_visible)");
+    foreach ($avis as $avi) {
+        $stmt->execute($avi);
+    }
+
 } catch (PDOException $e) {
     echo "Erreur : " . $e->getMessage();
 }

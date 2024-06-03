@@ -37,6 +37,49 @@ CREATE TABLE IF NOT EXISTS image (
     FOREIGN KEY (habitat_id) REFERENCES habitat(id)
 );
 
+-- Création de la table 'role'
+CREATE TABLE IF NOT EXISTS role (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    label VARCHAR(50) NOT NULL
+);
+
+-- Création de la table 'user'
+CREATE TABLE IF NOT EXISTS user (
+    username VARCHAR(255) PRIMARY KEY,
+    password VARCHAR(50) NOT NULL,
+    nom VARCHAR(50) NOT NULL,
+    prenom VARCHAR(50) NOT NULL,
+    role_id INT,
+    FOREIGN KEY (role_id) REFERENCES role(id)
+);
+
+-- Création de la table 'service'
+CREATE TABLE IF NOT EXISTS service (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
+    prix DECIMAL(10, 2) DEFAULT NULL
+);
+
+-- Création de la table 'avis'
+CREATE TABLE IF NOT EXISTS avis (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    pseudo VARCHAR(50) NOT NULL,
+    commentaire TEXT NOT NULL,
+    is_visible BOOLEAN DEFAULT FALSE
+);
+
+-- Création de la table 'rapport_veterinaire'
+CREATE TABLE IF NOT EXISTS rapport_veterinaire (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    rapport TEXT NOT NULL,
+    animal_id INT,
+    user_id VARCHAR(255),
+    FOREIGN KEY (animal_id) REFERENCES animal(id),
+    FOREIGN KEY (user_id) REFERENCES user(username)
+);
+
 -- Insertion des données : 
 
 -- Insérer des habitats
@@ -69,3 +112,25 @@ INSERT INTO image (data, habitat_id) VALUES
 (LOAD_FILE('/path/to/savane_image.jpg'), (SELECT id FROM habitat WHERE nom = 'savane')),
 (LOAD_FILE('/path/to/jungle_image.jpg'), (SELECT id FROM habitat WHERE nom = 'jungle')),
 (LOAD_FILE('/path/to/marais_image.jpg'), (SELECT id FROM habitat WHERE nom = 'marais'));
+
+-- Insérer des rôles
+INSERT INTO role (label) VALUES
+('admin'),
+('employé'),
+('vétérinaire');
+
+-- Insérer des utilisateurs
+INSERT INTO user (username, password, nom, prenom, role_id) VALUES
+('admin@example.com', 'adminpass', 'José', 'Dupont', (SELECT id FROM role WHERE label = 'admin')),
+('employe@example.com', 'employepass', 'Jonh', 'Doe', (SELECT id FROM role WHERE label = 'employé')),
+('vet@example.com', 'vetpass', 'Jane', 'Dane', (SELECT id FROM role WHERE label = 'vétérinaire'));
+
+-- Insérer des services
+INSERT INTO service (nom, description, prix) VALUES
+('Restauration', 'Service de restauration avec divers plats et boissons disponibles.', 15.00),
+('Visite Guidée', 'Visite guidée gratuite pour découvrir les différents animaux du zoo.', NULL),
+('Visite en Petit Train', 'Tour en petit train pour explorer le zoo.', 5.00);
+
+INSERT INTO avis (pseudo, commentaire, is_visible) VALUES
+('JohnDoe', 'Très belle visite, les enfants ont adoré!', FALSE),
+('Visitor123', 'Les animaux semblaient bien traités, bonne expérience.', FALSE);
