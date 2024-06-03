@@ -80,6 +80,14 @@ CREATE TABLE IF NOT EXISTS rapport_veterinaire (
     FOREIGN KEY (user_id) REFERENCES user(username)
 );
 
+-- Création de la table 'animal_image'
+CREATE TABLE IF NOT EXISTS animal_image (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    animal_id INT,
+    image LONGBLOB NOT NULL,
+    FOREIGN KEY (animal_id) REFERENCES animal(id)
+);
+
 -- Insertion des données : 
 
 -- Insérer des habitats
@@ -92,19 +100,19 @@ INSERT INTO habitat (nom, description, commentaire_habitat) VALUES
 INSERT INTO race (label) VALUES
 ('Lion'),
 ('Ours'),
-('Singe');
+('crocodile');
 
 -- Insérer des animaux
 INSERT INTO animal (prenom, etat, habitat_id, race_id) VALUES
 ('Leo', 'sain', (SELECT id FROM habitat WHERE nom = 'savane'), (SELECT id FROM race WHERE label = 'Lion')),
 ('Simba', 'sain', (SELECT id FROM habitat WHERE nom = 'savane'), (SELECT id FROM race WHERE label = 'Lion')),
 ('Nala', 'sain', (SELECT id FROM habitat WHERE nom = 'savane'), (SELECT id FROM race WHERE label = 'Lion')),
-('Mowgli', 'sain', (SELECT id FROM habitat WHERE nom = 'jungle'), (SELECT id FROM race WHERE label = 'Singe')),
+('Mowgli', 'sain', (SELECT id FROM habitat WHERE nom = 'jungle'), (SELECT id FROM race WHERE label = 'ours')),
 ('Baloo', 'sain', (SELECT id FROM habitat WHERE nom = 'jungle'), (SELECT id FROM race WHERE label = 'Ours')),
-('Bagheera', 'sain', (SELECT id FROM habitat WHERE nom = 'jungle'), (SELECT id FROM race WHERE label = 'Singe')),
-('Frodo', 'sain', (SELECT id FROM habitat WHERE nom = 'marais'), (SELECT id FROM race WHERE label = 'Singe')),
-('Gollum', 'sain', (SELECT id FROM habitat WHERE nom = 'marais'), (SELECT id FROM race WHERE label = 'Singe')),
-('Sam', 'sain', (SELECT id FROM habitat WHERE nom = 'marais'), (SELECT id FROM race WHERE label = 'Singe'));
+('Bagheera', 'sain', (SELECT id FROM habitat WHERE nom = 'jungle'), (SELECT id FROM race WHERE label = 'ours')),
+('Frodo', 'sain', (SELECT id FROM habitat WHERE nom = 'marais'), (SELECT id FROM race WHERE label = 'crocodile')),
+('Gollum', 'sain', (SELECT id FROM habitat WHERE nom = 'marais'), (SELECT id FROM race WHERE label = 'crocodile')),
+('Sam', 'sain', (SELECT id FROM habitat WHERE nom = 'marais'), (SELECT id FROM race WHERE label = 'crocodile'));
 
 -- Insérer des images (les données des images doivent être en LONGBLOB, donc cette commande est juste un exemple)
 -- Assurez-vous d'utiliser des binaires valides pour les images dans votre implémentation réelle
@@ -134,3 +142,10 @@ INSERT INTO service (nom, description, prix) VALUES
 INSERT INTO avis (pseudo, commentaire, is_visible) VALUES
 ('JohnDoe', 'Très belle visite, les enfants ont adoré!', FALSE),
 ('Visitor123', 'Les animaux semblaient bien traités, bonne expérience.', FALSE);
+
+-- Insérer des images (les données des images doivent être en LONGBLOB, donc cette commande est juste un exemple)
+-- Assurez-vous d'utiliser des binaires valides pour les images dans votre implémentation réelle
+INSERT INTO animal_image (animal_id, image) VALUES
+(1, LOAD_FILE('path/to/animal1.jpg')),
+(2, LOAD_FILE('path/to/animal2.jpg')),
+(3, LOAD_FILE('path/to/animal3.jpg'));

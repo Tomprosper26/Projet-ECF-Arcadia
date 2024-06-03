@@ -24,7 +24,7 @@ try {
     $races = [
         ['label' => 'Lion'],
         ['label' => 'Ours'],
-        ['label' => 'Singe']
+        ['label' => 'Crocodile']
     ];
 
     $stmt = $pdo->prepare("INSERT INTO race (label) VALUES (:label)");
@@ -37,12 +37,12 @@ try {
         ['prenom' => 'Leo', 'etat' => 'sain', 'habitat_nom' => 'savane', 'race_label' => 'Lion'],
         ['prenom' => 'Simba', 'etat' => 'sain', 'habitat_nom' => 'savane', 'race_label' => 'Lion'],
         ['prenom' => 'Nala', 'etat' => 'sain', 'habitat_nom' => 'savane', 'race_label' => 'Lion'],
-        ['prenom' => 'Mowgli', 'etat' => 'sain', 'habitat_nom' => 'jungle', 'race_label' => 'Singe'],
+        ['prenom' => 'Mowgli', 'etat' => 'sain', 'habitat_nom' => 'jungle', 'race_label' => 'Ours'],
         ['prenom' => 'Baloo', 'etat' => 'sain', 'habitat_nom' => 'jungle', 'race_label' => 'Ours'],
-        ['prenom' => 'Bagheera', 'etat' => 'sain', 'habitat_nom' => 'jungle', 'race_label' => 'Singe'],
-        ['prenom' => 'Frodo', 'etat' => 'sain', 'habitat_nom' => 'marais', 'race_label' => 'Singe'],
-        ['prenom' => 'Gollum', 'etat' => 'sain', 'habitat_nom' => 'marais', 'race_label' => 'Singe'],
-        ['prenom' => 'Sam', 'etat' => 'sain', 'habitat_nom' => 'marais', 'race_label' => 'Singe']
+        ['prenom' => 'Bagheera', 'etat' => 'sain', 'habitat_nom' => 'jungle', 'race_label' => 'Ours'],
+        ['prenom' => 'Frodo', 'etat' => 'sain', 'habitat_nom' => 'marais', 'race_label' => 'Crocodile'],
+        ['prenom' => 'Gollum', 'etat' => 'sain', 'habitat_nom' => 'marais', 'race_label' => 'Crocodile'],
+        ['prenom' => 'Sam', 'etat' => 'sain', 'habitat_nom' => 'marais', 'race_label' => 'Crocodile']
     ];
 
     $stmt = $pdo->prepare("INSERT INTO animal (prenom, etat, habitat_id, race_id) VALUES (:prenom, :etat, :habitat_id, :race_id)");
@@ -57,11 +57,11 @@ try {
         ]);
     }
 
-    // Insérer des images (les données des images doivent être en LONGBLOB)
+    // Insérer des images.
     $images = [
-        ['file_path' => '/path/to/savane_image.jpg', 'habitat_nom' => 'savane'],
-        ['file_path' => '/path/to/jungle_image.jpg', 'habitat_nom' => 'jungle'],
-        ['file_path' => '/path/to/marais_image.jpg', 'habitat_nom' => 'marais']
+        ['file_path' => 'images/savane.jpg', 'habitat_nom' => 'savane'],
+        ['file_path' => 'images/jungle.jpg', 'habitat_nom' => 'jungle'],
+        ['file_path' => 'images/marais.jpg', 'habitat_nom' => 'marais']
     ];
 
     $stmt = $pdo->prepare("INSERT INTO image (data, habitat_id) VALUES (:data, :habitat_id)");
@@ -72,6 +72,17 @@ try {
             'data' => $imageData,
             'habitat_id' => $habitatId
         ]);
+    }
+
+    $roles = [
+        ['label' => 'admin'],
+        ['label' => 'employé'],
+        ['label' => 'vétérinaire']
+    ];
+
+    $stmt = $pdo->prepare("INSERT INTO role (label) VALUES (:label)");
+    foreach ($roles as $role) {
+        $stmt->execute($role);
     }
 
     $users = [
@@ -111,6 +122,27 @@ try {
     $stmt = $pdo->prepare("INSERT INTO avis (pseudo, commentaire, is_visible) VALUES (:pseudo, :commentaire, :is_visible)");
     foreach ($avis as $avi) {
         $stmt->execute($avi);
+    }
+
+    $aimages = [
+        ['animal_id' => 1, 'file_path' => 'images/lion.jpg'],
+        ['animal_id' => 2, 'file_path' => 'images/lion.jpg'],
+        ['animal_id' => 3, 'file_path' => 'images/lion.jpg'],
+        ['animal_id' => 4, 'file_path' => 'images/ours.jpg'],
+        ['animal_id' => 5, 'file_path' => 'images/ours.jpg'],
+        ['animal_id' => 6, 'file_path' => 'images/ours.jpg'],
+        ['animal_id' => 7, 'file_path' => 'images/crocodile.jpg'],
+        ['animal_id' => 8, 'file_path' => 'images/crocodile.jpg'],
+        ['animal_id' => 9, 'file_path' => 'images/crocodile.jpg']
+    ];
+
+    $stmt = $pdo->prepare("INSERT INTO animal_image (animal_id, image) VALUES (:animal_id, :image)");
+    foreach ($aimages as $aimage) {
+        $imageData = file_get_contents($aimage['file_path']);
+        $stmt->execute([
+            'animal_id' => $aimage['animal_id'],
+            'image' => $imageData
+        ]);
     }
 
 } catch (PDOException $e) {

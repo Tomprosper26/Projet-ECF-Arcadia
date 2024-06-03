@@ -65,7 +65,6 @@ try {
     $pdo->exec($createUserTableSQL);
 
     $createServiceTableSQL = "
-    -- Création de la table 'service'
     CREATE TABLE IF NOT EXISTS service (
         id INT AUTO_INCREMENT PRIMARY KEY,
         nom VARCHAR(255) NOT NULL,
@@ -76,7 +75,6 @@ try {
     $pdo->exec($createServiceTableSQL);
 
     $createAvisTableSQL = "
-    -- Création de la table 'avis'
     CREATE TABLE IF NOT EXISTS avis (
         id INT AUTO_INCREMENT PRIMARY KEY,
         pseudo VARCHAR(50) NOT NULL,
@@ -87,7 +85,6 @@ try {
     $pdo->exec($createAvisTableSQL);
 
     $createRapportVeterinaireTableSQL = "
-    -- Création de la table 'rapport_veterinaire'
     CREATE TABLE IF NOT EXISTS rapport_veterinaire (
         id INT AUTO_INCREMENT PRIMARY KEY,
         date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -99,6 +96,16 @@ try {
     );
     ";
     $pdo->exec($createRapportVeterinaireTableSQL);
+
+    $createAnimalImageTableSQL = "
+    CREATE TABLE IF NOT EXISTS animal_image (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        animal_id INT,
+        image LONGBLOB NOT NULL,
+        FOREIGN KEY (animal_id) REFERENCES animal(id)
+    );
+    ";
+    $pdo->exec($createAnimalImageTableSQL);
 
 } catch (PDOException $e) {
     echo "Erreur : " . $e->getMessage();
