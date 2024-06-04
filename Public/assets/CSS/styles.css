@@ -1,4 +1,7 @@
 /* styles.css */
+@import url('https://fonts.googleapis.com/css2?family=Seymour+One&display=swap');
+
+
 :root {
     --green-color : #3A5743; /* forest green */
     --olivine-color : #98B06F; /* olive green */
@@ -11,4 +14,12 @@
 
 .text-olive {
     color: var(--olivine-color);
+}
+
+.text-brown {
+    color: var(--brown-color);
+}
+
+.font-rounded {
+    font-family: 'Seymour One', 'Serif';
 }
