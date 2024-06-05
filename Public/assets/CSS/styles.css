@@ -28,3 +28,11 @@ a:hover {
     text-decoration: underline;
     text-decoration-thickness: 15%;
 }
+
+.bg-olive {
+    background-color: var(--olivine-color);
+}
+
+.bg-green {
+    background-color: var(--green-color);
+}
