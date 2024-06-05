@@ -23,3 +23,8 @@
 .font-rounded {
     font-family: 'Seymour One', 'Serif';
 }
+
+a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 15%;
+}

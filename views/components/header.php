@@ -16,28 +16,28 @@
             </div>
         </div>
         <div class="col-md-8 col-sm-12">
-            <div class="d-flex flex-row justify-content-center">
+            <div class="d-flex justify-content-evenly">
                 <nav class="navbar navbar-expand-lg bg-body-white">
-                    <div class="d-flex justify-content-center mt-2">
+                    <div class="mt-md-2">
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
                             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                                 <ul class="navbar-nav">
-                                    <li class="nav-item fs-6">
-                                        <a class="nav-link font-rounded" href="/"><p class="<?php echo ($_SERVER['REQUEST_URI'] == '/') ? 'text-olive' : 'text-brown';?>">Accueil<p></a>
+                                    <li class="nav-item fs-6 mx-xxl-4 mx-xl-3">
+                                        <a class="nav-link font-rounded" href="/"><p class="<?php echo ($_SERVER['REQUEST_URI'] == '/') ? 'text-green' : 'text-brown';?>">Accueil<p></a>
                                     </li>
-                                    <li class="nav-item fs-6">
+                                    <li class="nav-item fs-6 mx-xxl-4 mx-xl-3">
                                         <a class="nav-link font-rounded" href="/habitats"><p class="<?php echo ($_SERVER['REQUEST_URI'] == '/habitas') ? 'text-olive' : 'text-brown';?>">Habitats<p></a>
                                     </li>
-                                    <li class="nav-item fs-6">
-                                        <a class="nav-link font-rounded" href="#"><p class="<?php echo ($_SERVER['REQUEST_URI'] == '/services') ? 'text-olive' : 'text-brown';?>">Services<p></a>
+                                    <li class="nav-item fs-6 mx-xxl-4 mx-xl-3">
+                                        <a class="nav-link font-rounded" href="/services"><p class="<?php echo ($_SERVER['REQUEST_URI'] == '/services') ? 'text-olive' : 'text-brown';?>">Services<p></a>
                                     </li>
-                                    <li class="nav-item fs-6">
-                                        <a class="nav-link font-rounded" href="#"><p class="<?php echo ($_SERVER['REQUEST_URI'] == '/contact') ? 'text-olive' : 'text-brown';?>">Contact<p></a>
+                                    <li class="nav-item fs-6 mx-xxl-4 mx-xl-3">
+                                        <a class="nav-link font-rounded" href="/contact"><p class="<?php echo ($_SERVER['REQUEST_URI'] == '/contact') ? 'text-olive' : 'text-brown';?>">Contact<p></a>
                                     </li>
-                                    <li class="nav-item fs-6">
-                                        <a class="nav-link font-rounded" href="#"><p class="<?php echo ($_SERVER['REQUEST_URI'] == '/connexion') ? 'text-olive' : 'text-brown';?>">Connexion<p></a>
+                                    <li class="nav-item fs-6 mx-xxl-4 mx-xl-3">
+                                        <a class="nav-link font-rounded" href="/connexion"><p class="<?php echo ($_SERVER['REQUEST_URI'] == '/connexion') ? 'text-olive' : 'text-brown';?>">Connexion<p></a>
                                     </li>
                                 </ul>
                             </div>
