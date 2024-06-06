@@ -58,7 +58,8 @@ CREATE TABLE IF NOT EXISTS service (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(255) NOT NULL,
     description TEXT NOT NULL,
-    prix DECIMAL(10, 2) DEFAULT NULL
+    prix DECIMAL(10, 2) DEFAULT NULL,
+    image LONGBLOB NOT NULL,
 );
 
 -- Création de la table 'avis'
@@ -92,7 +93,7 @@ CREATE TABLE IF NOT EXISTS animal_image (
 
 -- Insérer des habitats
 INSERT INTO habitat (nom, description, commentaire_habitat) VALUES
-('savane', 'Large plaine herbeuse avec des arbres dispersés', 'Chaud et sec'),
+('savane', 'Large plaine herbeuse', 'Chaud et sec'),
 ('jungle', 'Forêt dense et humide', 'Chaud et humide'),
 ('marais', 'Terrain bas et humide', 'Humide et boueux');
 
@@ -134,10 +135,10 @@ INSERT INTO user (username, password, nom, prenom, role_id) VALUES
 ('vet@example.com', 'vetpass', 'Jane', 'Dane', (SELECT id FROM role WHERE label = 'vétérinaire'));
 
 -- Insérer des services
-INSERT INTO service (nom, description, prix) VALUES
-('Restauration', 'Service de restauration avec divers plats et boissons disponibles.', 15.00),
-('Visite Guidée', 'Visite guidée gratuite pour découvrir les différents animaux du zoo.', NULL),
-('Visite en Petit Train', 'Tour en petit train pour explorer le zoo.', 5.00);
+INSERT INTO service (nom, description, prix, image) VALUES
+('Restauration', 'Service de restauration avec divers plats et boissons disponibles.', 15.00, LOAD_FILE('path/to/service1.jpg')),
+('Visite Guidée', 'Visite guidée gratuite pour découvrir les différents animaux du zoo.', NULL, LOAD_FILE('path/to/service2.jpg')),
+('Visite en Petit Train', 'Tour en petit train pour explorer le zoo.', 5.00, LOAD_FILE('path/to/service3.jpg'));
 
 INSERT INTO avis (pseudo, commentaire, is_visible) VALUES
 ('JohnDoe', 'Très belle visite, les enfants ont adoré!', FALSE),

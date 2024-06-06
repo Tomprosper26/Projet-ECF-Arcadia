@@ -10,7 +10,7 @@ try {
 
     // Insérer des données dans la table habitat
     $habitats = [
-        ['nom' => 'savane', 'description' => 'Large plaine herbeuse avec des arbres dispersés', 'commentaire_habitat' => 'Chaud et sec'],
+        ['nom' => 'savane', 'description' => 'Large plaine herbeuse', 'commentaire_habitat' => 'Chaud et sec'],
         ['nom' => 'jungle', 'description' => 'Forêt dense et humide', 'commentaire_habitat' => 'Chaud et humide'],
         ['nom' => 'marais', 'description' => 'Terrain bas et humide', 'commentaire_habitat' => 'Humide et boueux']
     ];
@@ -104,14 +104,21 @@ try {
     }
 
     $services = [
-        ['nom' => 'Restauration', 'description' => 'Service de restauration avec divers plats et boissons disponibles.', 'prix' => 15.00],
-        ['nom' => 'Visite Guidée', 'description' => 'Visite guidée gratuite pour découvrir les différents animaux du zoo.', 'prix' => NULL],
-        ['nom' => 'Visite en Petit Train', 'description' => 'Tour en petit train pour explorer le zoo.', 'prix' => 5.00]
+        ['nom' => 'Restauration', 'description' => 'Service de restauration avec divers plats et boissons disponibles.', 'prix' => 15.00, 'file_path' => 'images/service1.jpg'],
+        ['nom' => 'Visite Guidée', 'description' => 'Visite guidée gratuite pour découvrir les différents animaux du zoo.', 'prix' => NULL, 'file_path' => 'images/service2.jpg'],
+        ['nom' => 'Visite en Petit Train', 'description' => 'Tour en petit train pour explorer le zoo.', 'prix' => 5.00, 'file_path' => 'images/service3.jpg']
     ];
 
-    $stmt = $pdo->prepare("INSERT INTO service (nom, description, prix) VALUES (:nom, :description, :prix)");
+    $stmt = $pdo->prepare("INSERT INTO service (nom, description, prix, image) VALUES (:nom, :description, :prix, :image)");
     foreach ($services as $service) {
-        $stmt->execute($service);
+        $imageData = file_get_contents($service['file_path']);
+
+        $stmt->execute([
+            'nom' => $service['nom'],
+            'description' => $service['description'],
+            'prix' => $service['prix'],
+            'image' => $imageData
+        ]);
     }
 
     $avis = [

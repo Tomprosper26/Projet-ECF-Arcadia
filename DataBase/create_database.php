@@ -69,7 +69,8 @@ try {
         id INT AUTO_INCREMENT PRIMARY KEY,
         nom VARCHAR(255) NOT NULL,
         description TEXT NOT NULL,
-        prix DECIMAL(10, 2) DEFAULT NULL
+        prix DECIMAL(10, 2) DEFAULT NULL,
+        image LONGBLOB NOT NULL
     );
     ";
     $pdo->exec($createServiceTableSQL);

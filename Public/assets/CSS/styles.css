@@ -1,11 +1,12 @@
 /* styles.css */
 @import url('https://fonts.googleapis.com/css2?family=Seymour+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
 
 
 :root {
     --green-color : #3A5743; /* forest green */
     --olivine-color : #98B06F; /* olive green */
-    --brown-color : #774936; /* wood brown */
+    --brown-color : #393424; /* wood brown */
 }
 
 .text-green {
@@ -21,12 +22,17 @@
 }
 
 .font-rounded {
-    font-family: 'Seymour One', 'Serif';
+    font-family: 'Seymour One', 'serif';
 }
 
-a:hover {
+.font-roboto {
+    font-family: 'Roboto Slab', 'serif';
+}
+
+.nav-link:hover {
     text-decoration: underline;
-    text-decoration-thickness: 15%;
+    text-decoration-thickness: 10%;
+    text-decoration-color: var(--olivine-color);
 }
 
 .bg-olive {
@@ -35,4 +41,8 @@ a:hover {
 
 .bg-green {
     background-color: var(--green-color);
+}
+
+.bg-brown {
+    background-color: var(--brown-color);
 }

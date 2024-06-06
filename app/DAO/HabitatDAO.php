@@ -43,5 +43,16 @@ class HabitatDAO extends DataBase {
         $stmt = $this->pdo->query("SELECT COUNT(*) FROM habitat");
         return $stmt->fetchColumn();
     }
+
+    public function getHabitatImage($habitatId) {
+        $stmt = $this->pdo->prepare('SELECT data FROM image WHERE habitat_id = :habitat_id');
+        $stmt->execute(['habitat_id' => $habitatId]);
+        return $stmt->fetchColumn();
+    }
+
+    public function getFirstThreeHabitats() {
+        $stmt = $this->pdo->query('SELECT * FROM habitat LIMIT 3');
+        return $stmt->fetchAll();
+    }
 }
 ?>
