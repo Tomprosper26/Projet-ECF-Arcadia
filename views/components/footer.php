@@ -1,8 +1,8 @@
 <footer>
 
-    <div class="container-fluid text-center mt-3">
+    <div class="container text-center mt-3">
         <p class=""><a class="nav-link" href="" style="text-decoration: underline">Politique de confidentialité</a></p>
-        <p class="">© Copyrights InstantsdeSoi 2021. Tous droits réservés</p>
+        <p class="">© Copyrights Arcadia 2024. Tous droits réservés</p>
         <p class=""><a class="nav-link" href="" style="text-decoration: underline">Do Not Sell My Personal Information</a></p>
     </div>
 

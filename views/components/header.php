@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<div class="row bg-body-white h-md-90 h-sm-150">
+<div class="row bg-body-white">
         <div class="col-md-3 col-sm-12">
             <div class="d-flex justify-content-center">
                 <h1 class="text-center font-rounded mt-3 fs-6"><div class="fs-4 text-green">ARCADIA</div><div class="fs-5 text-olive">Parc Zoologique</div></h1>

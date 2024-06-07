@@ -140,9 +140,10 @@ INSERT INTO service (nom, description, prix, image) VALUES
 ('Visite Guidée', 'Visite guidée gratuite pour découvrir les différents animaux du zoo.', NULL, LOAD_FILE('path/to/service2.jpg')),
 ('Visite en Petit Train', 'Tour en petit train pour explorer le zoo.', 5.00, LOAD_FILE('path/to/service3.jpg'));
 
+--Insérer des avis
 INSERT INTO avis (pseudo, commentaire, is_visible) VALUES
-('JohnDoe', 'Très belle visite, les enfants ont adoré!', FALSE),
-('Visitor123', 'Les animaux semblaient bien traités, bonne expérience.', FALSE);
+('JohnDoe', 'Très belle visite, les enfants ont adoré!', TRUE),
+('Visitor123', 'Les animaux semblaient bien traités, bonne expérience.', TRUE);
 
 -- Insérer des images (les données des images doivent être en LONGBLOB, donc cette commande est juste un exemple)
 -- Assurez-vous d'utiliser des binaires valides pour les images dans votre implémentation réelle
