@@ -31,9 +31,9 @@
         <?php foreach ($habitats as $habitat) : ?>
             <?php $image = $images[($habitat['id'] - 1)] ?>
             <div class="col-md-6 col-sm-12 col-xl-3 d-flex justify-content-center align-items-center flex-column pt-md-0 pt-sm-3">
-                <img src="data:image/jpeg;base64,<?php echo base64_encode($image) ?>" class="rounded shadow-lg border border-3 border-white" style="width: 15rem; height:12rem" alt="image représentant la <?= $habitat['nom'] ?>">
+                <img src="data:image/jpeg;base64,<?php echo base64_encode($image) ?>" class="rounded shadow-lg border border-3 border-white mb-3" style="width: 15rem; height:12rem" alt="image représentant la <?= $habitat['nom'] ?>">
                 <h5 class="text-center font-rounded fs-3 text-olive pt-3"><?= $habitat['nom'] ?></h5>
-                <p class="text-center font-rounded fs-4 text-brown pt-3"><?= $habitat['description'] ?></p>
+                <p class="text-center font-rounded fs-4 text-brown"><?= $habitat['description'] ?></p>
             </div>
         <?php endforeach ?>
     </div>
