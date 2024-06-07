@@ -1,27 +1,11 @@
 <?php require "components/header.php"; ?>
+
 <div class="bg-green py-4">
     <div class="row justify-content-center">
         <h2 class="text-center fs-1 font-rounded text-olive pb-2">Qui Sommes-nous?</h2>
         <p class="col-md-7 col-sm-9 col-xl-7 text-center fs-4 font-roboto text-white">Fondée en 1960, Arcadia est un Parc Zoologique avec plus de <?= $animalcount ?> animaux répartis dans <?= $habitatcount ?> habitats.<br>
             Nos animaux sont notre fiertée et leur bien-être est notre prioritée.</p>
     </div>
-    <!-- <div class="row justify-content-center mt-4">
-        <div class="col-md-7 col-sm-9 col-xl-6">
-            <div id="carouselExampleAutoplaying" class="carousel slide shadow-lg" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="medias/présentation_zoo_1.jpg" class="w-100 rounded" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="medias/présentation_zoo_2.jpg" class="w-100 rounded" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="medias/présentation_zoo_3.jpg" class="w-100 rounded" alt="...">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
 </div>
 <div class="bg-green">
     <div class="row justify-content-center">
@@ -31,7 +15,7 @@
         <?php foreach ($habitats as $habitat) : ?>
             <?php $image = $images[($habitat['id'] - 1)] ?>
             <div class="col-md-6 col-sm-12 col-xl-3 d-flex justify-content-center align-items-center flex-column pt-md-0 pt-sm-3">
-                <img src="data:image/jpeg;base64,<?php echo base64_encode($image) ?>" class="rounded shadow-lg border border-3 border-white mb-3" style="width: 15rem; height:12rem" alt="image représentant la <?= $habitat['nom'] ?>">
+                <img src="data:image/jpeg;base64,<?php echo base64_encode($image) ?>" class="rounded shadow-lg mb-3" style="width: 15rem; height:12rem" alt="image représentant la <?= $habitat['nom'] ?>">
                 <h5 class="text-center font-rounded fs-3 text-olive pt-3"><?= $habitat['nom'] ?></h5>
                 <p class="text-center font-rounded fs-4 text-brown"><?= $habitat['description'] ?></p>
             </div>
