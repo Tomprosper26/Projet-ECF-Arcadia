@@ -20,8 +20,15 @@ if ($requestPath === '/') {
     $router->addRoute('/avis', 'AvisController', 'render');
 
 } elseif ($requestPath === '/services') {
+
     $ServicesController = new ServicesController();
     $router->addRoute('/services', 'ServicesController', 'render');
+
+}  elseif ($requestPath === '/habitats') {
+
+    $HabitatsController = new HabitatsController();
+    $router->addRoute('/habitats', 'HabitatsController', 'render'); 
+
 } else {
     echo "page introuvable";
 }

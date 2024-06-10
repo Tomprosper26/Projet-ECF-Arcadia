@@ -54,5 +54,10 @@ class HabitatDAO extends DataBase {
         $stmt = $this->pdo->query('SELECT * FROM habitat LIMIT 3');
         return $stmt->fetchAll();
     }
+
+    public function getHabitatImages() {
+        $stmt = $this->pdo->query("SELECT habitat.id, image.data FROM habitat JOIN image ON habitat.id = image.habitat_id");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 ?>
