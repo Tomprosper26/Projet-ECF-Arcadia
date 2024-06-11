@@ -26,7 +26,7 @@
                 <div class="card mb-3 p-0 border-0 shadow-lg" style="max-width: 1000px;">
                     <div class="row g-0">
                         <div class="col-md-4">
-                            <img src="data:image/jpeg;base64,<?php echo base64_encode($service['image']) ?>" class="card-img-top img-fluid" style="width: 20rem; height:17rem" alt="image de <?= $service['nom'] ?>">
+                            <img src="data:image/jpeg;base64,<?php echo base64_encode($service['image']) ?>" class="card-img-top img-fluid rounded" style="width: 20rem; height:17rem" alt="image de <?= $service['nom'] ?>">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">

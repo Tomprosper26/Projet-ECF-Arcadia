@@ -28,7 +28,7 @@
                                         <a class="nav-link font-rounded" href="/"><p class="<?php echo ($_SERVER['REQUEST_URI'] == '/') ? 'text-olive' : 'text-brown';?>">Accueil<p></a>
                                     </li>
                                     <li class="nav-item fs-6 mx-xxl-4 mx-xl-3">
-                                        <a class="nav-link font-rounded" href="/habitats"><p class="<?php echo ($_SERVER['REQUEST_URI'] == '/habitas') ? 'text-olive' : 'text-brown';?>">Habitats<p></a>
+                                        <a class="nav-link font-rounded" href="/habitats"><p class="<?php echo ($_SERVER['REQUEST_URI'] == '/habitats') ? 'text-olive' : 'text-brown';?>">Habitats<p></a>
                                     </li>
                                     <li class="nav-item fs-6 mx-xxl-4 mx-xl-3">
                                         <a class="nav-link font-rounded" href="/services"><p class="<?php echo ($_SERVER['REQUEST_URI'] == '/services') ? 'text-olive' : 'text-brown';?>">Services<p></a>

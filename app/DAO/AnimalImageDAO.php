@@ -23,5 +23,10 @@ class AnimalImageDAO extends DataBase {
         $stmt = $this->pdo->prepare("DELETE FROM animal_image WHERE id = :id");
         return $stmt->execute(['id' => $id]);
     }
+
+    public function getAllAnimalImages() {
+        $stmt = $this->pdo->query("SELECT * FROM animal_image");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 ?>
