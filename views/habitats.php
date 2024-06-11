@@ -33,16 +33,41 @@
                 <div class="collapse col-xl-6 col-md-8 col-sm-6 p-0" id="<?= $habitat['id'] ?>">
                     <div class="card card-body p-0 border border-0 rounded" style="background-color: #393424;">
                         <div class="d-flex justify-content-evenly row rounded py-3">
-                            <?php foreach ($animals as $animal) : ?>
-                                <?php if($habitat['id'] == $animal['habitat_id']) : ?>
-                                <?php foreach($animalImages as $animalImage) {if($animalImage['animal_id'] == $animal['id']){$imageData = $animalImage['image']; break;} } ?>    
-                                <div class="card p-0 col-md-3 col-sm-8 mt-2 mb-2 border border-0 shadow-lg">
-                                    <img src="data:image/jpeg;base64,<?php echo base64_encode($imageData) ?>" class="card-img-top" alt="image de <?= $animal['prenom'] ?>">
-                                    <div class="card-body">
-                                        <h5 class="card-title text-center"><?= $animal['prenom'] ?></h5>
-                                        <p class="card-text text-center">santé : <?= $animal['etat']?></p>
+                            <?php foreach ($animaldetails as $animal) : ?>
+                                <?php if ($habitat['id'] == $animal['habitat_id']) : ?>
+                                    <div class="card p-0 col-md-3 col-sm-8 mt-2 mb-2 border border-0 shadow-lg">
+                                        <img src="data:image/jpeg;base64,<?php echo base64_encode($animal['image']) ?>" class="card-img-top" alt="image de <?= $animal['label'] ?>">
+                                        <div class="card-body">
+                                            <h5 class="card-title text-center"><?= $animal['prenom'] ?></h5>
+                                            <p class="card-text text-center">santé : <?= $animal['etat'] ?></p>
+                                            <div class="d-flex justify-content-center">
+                                                <button type="button" class="btn btn-primary border border-0" style="background-color: #393424;" data-bs-toggle="modal" data-bs-target="#<?= $animal['prenom'] ?>">
+                                                    Voir les détails
+                                                </button>
+                                            </div>
+                                            <div class="modal fade" id="<?= $animal['prenom'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="row d-flex justify-content-center">
+                                                            <div class="modal-body">
+                                                                <div class="card p-0 mt-2 mb-2 border border-0 shadow-lg">
+                                                                    <img src="data:image/jpeg;base64,<?php echo base64_encode($animal['image']) ?>" class="card-img-top" alt="image de <?= $animal['label'] ?>">
+                                                                    <div class="card-body">
+                                                                        <h5 class="card-title text-center p-0"><?= $animal['prenom'] ?></h5>
+                                                                        <p class="card-text text-center p-0">santé : <?= $animal['etat'] ?></p>
+                                                                        <p class="card-text text-center p-0">race : <?= $animal['label'] ?></p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="container row justify-content-center p-3">
+                                                            <button type="button" class="btn btn-secondary col-3" data-bs-dismiss="modal">fermé</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
                                 <?php endif ?>
                             <?php endforeach ?>
                         </div>

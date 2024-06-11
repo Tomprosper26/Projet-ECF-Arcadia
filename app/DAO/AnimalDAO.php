@@ -45,5 +45,10 @@ class AnimalDAO extends DataBase {
         $stmt = $this->pdo->query("SELECT COUNT(*) FROM animal");
         return $stmt->fetchColumn();
     }
+
+    public function getAllAnimalsDetails() {
+        $stmt = $this->pdo->query("SELECT * FROM animal LEFT JOIN animal_image ON animal.id = animal_image.animal_id RIGHT JOIN race ON race.id = animal.race_id");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 ?>
