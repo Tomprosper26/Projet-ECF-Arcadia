@@ -34,7 +34,7 @@
     </div>
     <div class="row d-flex justify-content-evenly my-4">
         <?php foreach ($services as $service) : ?>
-            <div class="card p-0 col-md-6 col-sm-12 col-lg-3 mt-sm-3" style="width: 20rem;">
+            <div class="card p-0 col-md-6 col-sm-12 col-lg-3 mt-sm-3 shadow-lg" style="width: 20rem;">
                 <img src="data:image/jpeg;base64,<?php echo base64_encode($service['image']) ?>" class="card-img-top img-fluid" style="width: 20rem; height:17rem" alt="image de <?= $service['nom'] ?>">
                 <div class="card-body">
                     <h3 class="card-title font-rounded fs-5">
