@@ -55,7 +55,7 @@ try {
 
     CREATE TABLE IF NOT EXISTS user (
         username VARCHAR(255) PRIMARY KEY,
-        password VARCHAR(50) NOT NULL,
+        password VARCHAR(255) NOT NULL,
         nom VARCHAR(50) NOT NULL,
         prenom VARCHAR(50) NOT NULL,
         role_id INT,

@@ -1,82 +1,64 @@
 <?php require "components/header.php"; ?>
 
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-xl-6 col-md-8 col-sm-10">
-            <h1 class="text-center font-rounded text-green">Votre avis compte pour nous</h1>
-            <form action="" method="post" novalidate>
-                <div class="form-group">
-                    <label for="pseudo">Pseudo:</label>
-                    <input type="text" id="pseudo" name="pseudo" class="form-control" minlength="5" required>
-                </div>
-                <div class="form-group">
-                    <label for="commentaire">Commentaire:</label>
-                    <textarea id="commentaire" name="commentaire" class="form-control" rows="5" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary btn-block mt-3 border-0 shadow-lg" style="background-color: #3A5743;">Envoyer</button>
-            </form>
+<div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h1 class="text-center font-rounded text-green">Formulaire de Connexion</h1>
+                    <form action="" method="post">
+                        <div class="form-group">
+                            <label for="email">Email address</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+                        <button type="submit" style="background-color: #3A5743;" class="btn btn-primary my-3 border border-0">Login</button>
+                    </form>
+                    <h2 class="text-center text-green mt-5">Cette Page est réservée aux employés du Zoo, Si vous n'êtes pas concerné merci de retourné sur la page d'acceuil</h2>
+            </div>
         </div>
     </div>
-</div>
 
-<?php
-require_once '../app/DAO/AvisDAO.php';
+<?php 
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $pseudo = htmlentities($_POST['pseudo']);
-    $commentaire = htmlentities($_POST['commentaire']);
+require_once "../app/DAO/UsersDAO.php";
 
-    $errors = [];
-    if (empty($pseudo) || strlen($pseudo) < 5) {
-        $errors[] = "Le pseudo doit contenir au moins 5 caractères.";
-    }
-    if (empty($commentaire)) {
-        $errors[] = "Le commentaire ne peut pas être vide.";
-    }
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $user = null;
 
-    if (empty($errors)) {
-
-        $avisDAO = new AvisDAO();
-        $avisDAO->addAvis($pseudo, $commentaire);
-
-        echo 
-        "<div class=\" container \">
-            <div class=\"row justify-content-center mt-5\">   
-                <div class=\"alert alert-success text-center col-xl-6 col-md-8 col-sm-10\" role=\"alert\">
-                    Merci pour votre avis il sera très prochainement visible sur notre page d'acceuil.
-                </div>
-            </div>
-        </div>
-
-        <div class=\" container \">
-            <div class=\"row justify-content-center\">   
-                <div class=\"alert alert-success text-center col-xl-6 col-md-8 col-sm-10\" role=\"alert\">
-                    Vous allez être redirigé vers la page d'acceuil.
-                </div>
-            </div>
-        </div>
-        <script>
-            setTimeout(function(){
-                window.location.href = '/';
-            }, 3000);
-        </script>";
-
-        exit;
-    } else {
-
-        foreach ($errors as $error) {
+    try {
+        $usersDAO = new UsersDAO();
+        $user = $this->usersDAO->getUserByEmail($email);
+        var_dump($user['password']);
+        if ($user && password_verify($password, $user['password'])) {
+            
+            $_SESSION['user'] = $user;
+            echo          
+            "<script>
+                setTimeout(function(){
+                    window.location.href = '/';
+                }, 1000);
+            </script>";
+        } else {
+            
             echo 
 
             "<div class=\" container \">
                 <div class=\"row justify-content-center mt-5\">   
                     <div class=\"alert alert-danger text-center col-xl-6 col-md-8 col-sm-10\" role=\"alert\">
-                        $error
+                        Nom de Compte ou Mot De Passe incorrect.
                     </div>
                 </div>
             </div>";
         }
+    } catch (PDOException $e) {
+        die("Error: " . $e->getMessage());
     }
 }
+
 ?>
 
 <script src="/assets/JS/main.js"></script>

@@ -86,9 +86,9 @@ try {
     }
 
     $users = [
-        ['username' => 'admin@example.com', 'password' => password_hash('adminpass', PASSWORD_DEFAULT), 'nom' => 'José', 'prenom' => 'Dupont', 'role_label' => 'admin'],
-        ['username' => 'employe@example.com', 'password' => password_hash('employepass', PASSWORD_DEFAULT), 'nom' => 'Jonh', 'prenom' => 'Doe', 'role_label' => 'employé'],
-        ['username' => 'vet@example.com', 'password' => password_hash('vetpass', PASSWORD_DEFAULT), 'nom' => 'Jane', 'prenom' => 'Dane', 'role_label' => 'vétérinaire']
+        ['username' => 'admin@example.com', 'password' => password_hash('adminpass', PASSWORD_BCRYPT), 'nom' => 'José', 'prenom' => 'Dupont', 'role_label' => 'admin'],
+        ['username' => 'employe@example.com', 'password' => password_hash('employepass', PASSWORD_BCRYPT), 'nom' => 'Jonh', 'prenom' => 'Doe', 'role_label' => 'employé'],
+        ['username' => 'vet@example.com', 'password' => password_hash('vetpass', PASSWORD_BCRYPT), 'nom' => 'Jane', 'prenom' => 'Dane', 'role_label' => 'vétérinaire']
     ];
 
     $stmt = $pdo->prepare("INSERT INTO user (username, password, nom, prenom, role_id) VALUES (:username, :password, :nom, :prenom, :role_id)");
