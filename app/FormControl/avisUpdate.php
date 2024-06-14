@@ -1,6 +1,6 @@
 <?php
-
 require_once "../app/DAO/AvisDAO.php";
+$user = $_SESSION['user'];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -15,13 +15,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $newVisibility = !$review['is_visible'];
         $reviewsDAO->updateVisibility($reviewId);
 
+        $url = "/connexion-" . $user['role_id'];
+        header("Location: $url");
+        exit();
+
     } elseif ($action == 'delete') {
 
         $reviewsDAO->deleteAvis($reviewId);
 
+        $url = "/connexion-" . $user['role_id'];
+        header("Location: $url");
+        exit();
     }
-
-    header("Location: /connexion-2");
-    exit();
 }
 ?>
