@@ -123,7 +123,8 @@ try {
 
     $avis = [
         ['pseudo' => 'JohnDoe', 'commentaire' => 'Très belle visite, les enfants ont adoré!', 'is_visible' => true],
-        ['pseudo' => 'Visitor123', 'commentaire' => 'Les animaux semblaient bien traités, bonne expérience.', 'is_visible' => true]
+        ['pseudo' => 'Visitor123', 'commentaire' => 'Les animaux semblaient bien traités, bonne expérience.', 'is_visible' => true],
+        ['pseudo' => 'Visitor456', 'commentaire' => 'Excelent Parc un grand soin est apporté aux animaux je recommande.', 'is_visible' => false]
     ];
 
     $stmt = $pdo->prepare("INSERT INTO avis (pseudo, commentaire, is_visible) VALUES (:pseudo, :commentaire, :is_visible)");

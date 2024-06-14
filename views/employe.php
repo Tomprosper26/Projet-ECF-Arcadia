@@ -2,6 +2,7 @@
 require "components/employeHead.php";
 require "../app/FormControl/avisUpdate.php";
 require "../app/FormControl/servicesUpdate.php";
+require "../app/FormControl/nourriture.php";
 
 if (!isset($_SESSION['user']) || $_SESSION['user']['role_id'] != 2) {
     echo "Il semblerait que vous n'ayez pas le droit d'être ici, merci de retourné sur la page d'accueil => <a href='/'>HomePage<a>";
@@ -60,7 +61,7 @@ $user = $_SESSION['user'];
                     </div>
                 </li>
                 <div class="d-flex justify-content-left mt-2">
-                    <button type="button" class="btn btn-primary border border-0" data-bs-toggle="modal" data-bs-target="#<?= $service['id'] ?>">
+                    <button type="button" class="btn btn-success border border-0" data-bs-toggle="modal" data-bs-target="#<?= $service['id'] ?>">
                         Modifier
                     </button>
                 </div>
@@ -86,7 +87,7 @@ $user = $_SESSION['user'];
                                                     <input type="number" class="form-control" id="prix" name="prix" value="<?= htmlspecialchars($service['prix']) ?>">
                                                 </div>
                                                 <div class="container row justify-content-center p-3">
-                                                    <button type="submit" name="action" class="btn btn-primary col-6" value="update_service">Enregistrer les modifications</button>
+                                                    <button type="submit" name="action" class="btn btn-success col-6" value="update_service">Enregistrer les modifications</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -101,6 +102,33 @@ $user = $_SESSION['user'];
                 </div>
             <?php endforeach ?>
         </ol>
+    </div>
+</div>
+<div class="bg-olive pt-3 row justify-content-center">
+    <div class="row justify-content-center">
+        <h2 class="text-center fs-1 font-rounded text-green pt-3">Nourriture des animaux</h2>
+    </div>
+    <div class="row col-md-6 col-sm-10 col-xl-4 d-flex justify-content-evenly py-3">
+        <form action="" method="post">
+            <label for="nourriture" class="form-label">Animal</label>
+            <select class="form-select" id="animal" name="animal_id" required>
+                <?php foreach ($animals as $animal) : ?>
+                    <option value="<?= $animal['id'] ?>"><?= htmlspecialchars($animal['prenom']) ?></option>
+                <?php endforeach ?>
+            </select>
+            <label for="nourriture" class="form-label mt-2">Nourriture</label>
+            <input type="text" class="form-control" id="nourriture" name="nourriture" required>
+
+            <label for="nom" class="form-label mt-2">Quantité</label>
+            <input type="number" class="form-control" id="quantité" name="quantité" required>
+
+            <label for="date" class="form-label mt-2">Date du repas</label>
+            <input type="datetime-local" class="form-control" id="date" name="date" required>
+
+            <div class="container row justify-content-center p-3">
+                <button type="submit" name="action" class="btn btn-success col-6" value="update_nourriture">Enregistrer les modifications</button>
+            </div>
+        </form>
     </div>
 </div>
 
