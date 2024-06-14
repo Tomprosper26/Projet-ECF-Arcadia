@@ -34,6 +34,11 @@ if ($requestPath === '/') {
     $HabitatsController = new ConnexionController();
     $router->addRoute('/connexion', 'ConnexionController', 'render'); 
 
+} elseif ($requestPath === '/connexion-2') {
+
+    $HabitatsController = new EmployeController();
+    $router->addRoute('/connexion-2', 'EmployeController', 'render'); 
+
 } else {
     echo "page introuvable";
 }

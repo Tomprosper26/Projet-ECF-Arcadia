@@ -26,6 +26,12 @@ class AvisDAO extends DataBase {
             $stmt = $this->pdo->query($sql);
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
+
+        public function getUnvisibleAvis() {
+            $sql = "SELECT * FROM avis WHERE is_visible = 0";
+            $stmt = $this->pdo->query($sql);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
     
         public function updateAvis($id, $pseudo, $commentaire, $isVisible) {
             $sql = "UPDATE avis SET pseudo = :pseudo, commentaire = :commentaire, is_visible = :is_visible WHERE id = :id";
@@ -49,6 +55,11 @@ class AvisDAO extends DataBase {
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute([':id' => $id]);
             return $stmt->fetch(PDO::FETCH_ASSOC);
+        }
+
+        public function updateVisibility($id) {
+            $stmt = $this->pdo->prepare("UPDATE avis SET is_visible = true WHERE id = :id");
+            $stmt->execute([':id' => $id]);
         }
 }
 
