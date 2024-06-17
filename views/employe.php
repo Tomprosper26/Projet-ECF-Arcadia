@@ -1,5 +1,4 @@
 <?php
-require "components/employeHead.php";
 require "../app/FormControl/avisUpdate.php";
 require "../app/FormControl/servicesUpdate.php";
 require "../app/FormControl/nourriture.php";
@@ -9,11 +8,13 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role_id'] != 2) {
     exit;
 };
 
+require "components/employeHead.php";
+
 $user = $_SESSION['user'];
 ?>
 <div class="col-md-7 col-sm-12">
     <div class="d-flex justify-content-end mx-3">
-        <h1 class="text-center fs-4 text-green mt-3">Bienvenue, <?= $user['nom'] . " " . $user['prenom'] ?></h1>
+        <h1 class="text-center fs-4 text-green mt-3">Bienvenue, <?= $user['nom'] . " " . $user['prenom'] ?> (Employé)</h1>
     </div>
 </div>
 </div>
@@ -48,7 +49,7 @@ $user = $_SESSION['user'];
 
 <div class="bg-olive pt-3 row justify-content-center">
     <div class="row justify-content-center">
-        <h2 class="text-center fs-1 font-rounded text-green pt-3">Modifier ou Ajouter un Service</h2>
+        <h2 class="text-center fs-1 font-rounded text-green pt-3">Modifier un Service</h2>
     </div>
     <div class="row col-md-6 col-sm-10 col-xl-4 d-flex justify-content-evenly py-3">
         <ol class="list-group mt-2">

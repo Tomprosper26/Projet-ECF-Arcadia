@@ -31,13 +31,18 @@ if ($requestPath === '/') {
 
 }   elseif ($requestPath === '/connexion') {
 
-    $HabitatsController = new ConnexionController();
+    $ConnexionController = new ConnexionController();
     $router->addRoute('/connexion', 'ConnexionController', 'render'); 
 
 } elseif ($requestPath === '/connexion-2') {
 
-    $HabitatsController = new EmployeController();
+    $EmployeController = new EmployeController();
     $router->addRoute('/connexion-2', 'EmployeController', 'render'); 
+
+} elseif ($requestPath === '/connexion-3') {
+
+    $VeterinaireController = new VeterinaireController();
+    $router->addRoute('/connexion-3', 'VeterinaireController', 'render'); 
 
 } else {
     echo "page introuvable";
