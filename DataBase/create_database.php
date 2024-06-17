@@ -93,7 +93,9 @@ try {
     CREATE TABLE IF NOT EXISTS rapport_veterinaire (
         id INT AUTO_INCREMENT PRIMARY KEY,
         date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        rapport TEXT NOT NULL,
+        nourriture VARCHAR(50),
+        grammage FLOAT,
+        détail TEXT,
         animal_id INT,
         user_id VARCHAR(255),
         FOREIGN KEY (animal_id) REFERENCES animal(id),

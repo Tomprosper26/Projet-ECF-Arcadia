@@ -34,6 +34,14 @@ class HabitatDAO extends DataBase {
         ]);
     }
 
+    public function updateCommentaire($id, $commentaire_habitat) {
+        $stmt = $this->pdo->prepare("UPDATE habitat SET commentaire_habitat = :commentaire_habitat WHERE id = :id");
+        return $stmt->execute([
+            'id' => $id,
+            'commentaire_habitat' => $commentaire_habitat
+        ]);
+    }
+
     public function deleteHabitat($id) {
         $stmt = $this->pdo->prepare("DELETE FROM habitat WHERE id = :id");
         return $stmt->execute(['id' => $id]);

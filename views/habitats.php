@@ -14,11 +14,10 @@
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-title font-rounded text-center">
+                                <h5 class="card-title font-rounded text-center pt-3 pb-3">
                                     <p class="text-green fs-3"><?= $habitat['nom'] ?></p>
                                 </h5>
-                                <p class="card-text font-roboto text-green fs-4 text-center"><?= $habitat['description'] ?></p>
-                                <p class="card-text font-roboto text-green fs-5 text-center mb-5">Principales Caractéristiques :<br><?= $habitat['commentaire_habitat'] ?></p>
+                                <p class="card-text font-roboto text-green fs-4 text-center mx-5">Principales Caractéristiques :<br><?= $habitat['description'] ?></p>
                                 <div class="d-flex justify-content-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />

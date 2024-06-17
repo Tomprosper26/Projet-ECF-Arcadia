@@ -10,9 +10,9 @@ try {
 
     // Insérer des données dans la table habitat
     $habitats = [
-        ['nom' => 'savane', 'description' => 'Large plaine herbeuse', 'commentaire_habitat' => 'Chaud et sec'],
-        ['nom' => 'jungle', 'description' => 'Forêt dense et humide', 'commentaire_habitat' => 'Chaud et humide'],
-        ['nom' => 'marais', 'description' => 'Terrain bas et humide', 'commentaire_habitat' => 'Humide et boueux']
+        ['nom' => 'savane', 'description' => 'Large plaine herbeuse', 'commentaire_habitat' => 'Très bien entretenue'],
+        ['nom' => 'jungle', 'description' => 'Forêt dense et humide', 'commentaire_habitat' => 'Très propre'],
+        ['nom' => 'marais', 'description' => 'Terrain bas et humide', 'commentaire_habitat' => 'Attention quelques arbres semblent trop secs']
     ];
 
     $stmt = $pdo->prepare("INSERT INTO habitat (nom, description, commentaire_habitat) VALUES (:nom, :description, :commentaire_habitat)");

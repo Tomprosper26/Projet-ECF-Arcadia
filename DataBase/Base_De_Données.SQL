@@ -78,7 +78,9 @@ CREATE TABLE IF NOT EXISTS avis (
 CREATE TABLE IF NOT EXISTS rapport_veterinaire (
     id INT AUTO_INCREMENT PRIMARY KEY,
     date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    rapport TEXT NOT NULL,
+    nourriture VARCHAR(50),
+    grammage FLOAT,
+    détail TEXT,
     animal_id INT,
     user_id VARCHAR(255),
     FOREIGN KEY (animal_id) REFERENCES animal(id),
@@ -97,9 +99,9 @@ CREATE TABLE IF NOT EXISTS animal_image (
 
 -- Insérer des habitats
 INSERT INTO habitat (nom, description, commentaire_habitat) VALUES
-('savane', 'Large plaine herbeuse', 'Chaud et sec'),
-('jungle', 'Forêt dense et humide', 'Chaud et humide'),
-('marais', 'Terrain bas et humide', 'Humide et boueux');
+('savane', 'Large plaine herbeuse', 'Très bien entretenue'),
+('jungle', 'Forêt dense et humide', 'Très propre'),
+('marais', 'Terrain bas et humide', 'Attention quelques arbres semblent trop secs');
 
 -- Insérer des races
 INSERT INTO race (label) VALUES
