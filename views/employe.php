@@ -120,7 +120,7 @@ $user = $_SESSION['user'];
             <label for="nourriture" class="form-label mt-2">Nourriture</label>
             <input type="text" class="form-control" id="nourriture" name="nourriture" required>
 
-            <label for="nom" class="form-label mt-2">Quantité</label>
+            <label for="nom" class="form-label mt-2">Quantité (gramme)</label>
             <input type="number" class="form-control" id="quantité" name="quantité" required>
 
             <label for="date" class="form-label mt-2">Date du repas</label>

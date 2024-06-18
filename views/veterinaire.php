@@ -7,6 +7,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role_id'] != 3) {
 
 require "components/employeHead.php";
 require "../app/FormControl/habitatCommentaire.php";
+require "../app/FormControl/rapport.php";
 
 $user = $_SESSION['user'];
 ?>
@@ -51,7 +52,7 @@ $user = $_SESSION['user'];
                         <div class="d-flex justify-content-evenly row rounded py-3">
                             <?php foreach ($animaldetails as $animal) : ?>
                                 <?php if ($habitat['id'] == $animal['habitat_id']) : ?>
-                                    <div class="card p-0 col-md-3 col-sm-8 mt-2 mb-2 border border-0 shadow-lg">
+                                    <div class="card p-0 col-md-3 col-sm-8 mt-2 mb-2 border border-0 shadow-lg mb-2">
                                         <img src="data:image/jpeg;base64,<?php echo base64_encode($animal['image']) ?>" class="card-img-top" alt="image de <?= $animal['label'] ?>">
                                         <div class="card-body">
                                             <h5 class="card-title text-center"><?= $animal['prenom'] ?></h5>
@@ -61,7 +62,7 @@ $user = $_SESSION['user'];
                                                     Ecrire un rapport
                                                 </button>
                                             </div>
-                                            <div class="modal fade" id="<?= $animal['prenom'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal fade mb-3" id="<?= $animal['prenom'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered">
                                                     <div class="modal-content">
                                                         <div class="row d-flex justify-content-center">
@@ -71,6 +72,28 @@ $user = $_SESSION['user'];
                                                                         <h5 class="card-title text-center p-0"><?= $animal['prenom'] ?></h5>
                                                                         <p class="card-text text-center p-0">dernier repas : <?= $animal['nourriture'] ?></p>
                                                                         <p class="card-text text-center p-0">quantité : <?= $animal['quantity'] ?> gr</p>
+                                                                        <form action="" method="post">
+                                                                            <input type="hidden" name="id" value="<?= $animal['id'] ?>">
+                                                                            <div class="mb-3">
+                                                                                <label for="nom" class="form-label">état de l'animal</label>
+                                                                                <input type="text" class="form-control" id="etat" name="etat" required>
+                                                                            </div>
+                                                                            <div class="mb-3">
+                                                                                <label for="nom" class="form-label">nourriture recommandée</label>
+                                                                                <input type="text" class="form-control" id="nourriture" name="nourriture" required>
+                                                                            </div>
+                                                                            <div class="mb-3">
+                                                                                <label for="nom" class="form-label">quantité (gramme)</label>
+                                                                                <input type="text" class="form-control" id="quantity" name="quantity" required>
+                                                                            </div>
+                                                                            <div class="mb-3">
+                                                                                <label for="nom" class="form-label">commentaire sur l'animal</label>
+                                                                                <input type="text" class="form-control" id="commentaire" name="commentaire" required>
+                                                                            </div>
+                                                                            <div class="container row justify-content-center p-3">
+                                                                                <button type="submit" name="action" class="btn btn-success col-6" value="create_rapport">Enregistrer le rapport</button>
+                                                                            </div>
+                                                                        </form>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -89,7 +112,7 @@ $user = $_SESSION['user'];
                     </div>
                 </div>
             </div>
-            <div class="d-flex justify-content-center mb-4">
+            <div class="d-flex justify-content-center mb-4 mt-2">
                 <button type="button" class="btn btn-primary border border-0" style="background-color: #393424;" data-bs-toggle="modal" data-bs-target="#<?= $habitat['nom'] ?>">
                     Mettre un commentaire sur l'habitat
                 </button>

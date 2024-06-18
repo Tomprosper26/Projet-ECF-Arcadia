@@ -4,13 +4,13 @@ require_once 'DataBaseDAO.php';
 
 class RapportDAO extends DataBase {
 
-    public function insertRapport($nourriture, $grammage, $détail, $animal_id, $user_id) {
-        $sql = "INSERT INTO rapport_veterinaire (nourriture, grammage, détail, animal_id, user_id) VALUES (:nourriture, :grammage, :détail, :animal_id, :user_id)";
+    public function insertRapport($nourriture, $grammage, $detail, $animal_id, $user_id) {
+        $sql = "INSERT INTO rapport_veterinaire (nourriture, grammage, détail, animal_id, user_id) VALUES (:nourriture, :grammage, :detail, :animal_id, :user_id)";
         $stmt = $this->pdo->prepare($sql);
         return $stmt->execute([
             'nourriture' => $nourriture,
             'grammage' => $grammage,
-            'détail' => $détail,
+            'detail' => $detail,
             'animal_id' => $animal_id,
             'user_id' => $user_id
         ]);

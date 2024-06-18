@@ -55,5 +55,13 @@ class AnimalDAO extends DataBase {
         $stmt = $this->pdo->prepare("UPDATE animal SET nourriture = ?, quantity = ?, date_repas = ? WHERE id = ?");
         $stmt->execute([$foodType, $quantity, $feedingDate, $animalId]);
     }
+
+    public function updateAnimalEtat($etat, $id) {
+        $stmt = $this->pdo->prepare("UPDATE animal SET etat = :etat  WHERE id = :id");
+        return $stmt->execute([
+            'etat' => $etat,
+            'id' => $id
+        ]);
+    }
 }
 ?>
