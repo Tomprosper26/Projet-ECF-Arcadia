@@ -29,10 +29,15 @@ if ($requestPath === '/') {
     $HabitatsController = new HabitatsController();
     $router->addRoute('/habitats', 'HabitatsController', 'render'); 
 
-}   elseif ($requestPath === '/connexion') {
+}  elseif ($requestPath === '/connexion') {
 
     $ConnexionController = new ConnexionController();
     $router->addRoute('/connexion', 'ConnexionController', 'render'); 
+
+} elseif ($requestPath === '/connexion-1') {
+
+    $EmployeController = new AdminController();
+    $router->addRoute('/connexion-1', 'AdminController', 'render'); 
 
 } elseif ($requestPath === '/connexion-2') {
 

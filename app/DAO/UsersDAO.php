@@ -26,6 +26,22 @@ class UsersDAO extends DataBase {
         return $stmt->execute(['id' => $id]);
     }
 
+    public function createUser($email, $password, $prenom, $nom, $role_id) {
+        
+        $stmt = $this->pdo->prepare("
+            INSERT INTO user (username, password, prenom, nom, role_id) 
+            VALUES (:email, :password, :prenom, :nom, :role_id)
+        ");
+        
+        return $stmt->execute([
+            ':email' => $email,
+            ':password' => $password,
+            ':prenom' => $prenom,
+            ':nom' => $nom,
+            ':role_id' => $role_id
+        ]);
+    }
+
 }
 
 ?>

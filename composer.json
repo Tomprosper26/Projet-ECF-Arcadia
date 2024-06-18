@@ -1,0 +1,17 @@
+{
+    "name": "user/projet-ecf",
+    "autoload": {
+        "psr-4": {
+            "User\\ProjetEcf\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ProsperTom",
+            "email": "tomprosper@gmx.fr"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^6.9"
+    }
+}

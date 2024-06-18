@@ -18,7 +18,7 @@ class VeterinaireController {
     }
 
     public function render() {
-        $title = 'Arcadia-Employé';
+        $title = 'Arcadia-Veterinaire';
         $animaldetails = $this->animalDAO->getAllAnimalsDetails();
         $habitats = $this->habitatDAO->getAllHabitats();
         $habitatsImg = $this->habitatDAO->getHabitatImages();
