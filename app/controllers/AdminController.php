@@ -30,6 +30,12 @@ class AdminController {
         $services = $this->servicesDAO->getAllServices();
         $animals = $this->animalDAO->getAllAnimals();
         $habitats = $this->habitatDAO->getAllHabitats();
+        $habitatsImg = $this->habitatDAO->getHabitatImages();
+        $habitatImages = [];
+        foreach ($habitatsImg as $habitatImg) {
+            $habitatImages[$habitatImg['id']] = $habitatImg['data'];
+        }
+        $animaldetails = $this->animalDAO->getAllAnimalsDetails();
         include "../views/admin.php";
     }
 

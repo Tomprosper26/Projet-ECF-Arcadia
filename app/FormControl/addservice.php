@@ -6,15 +6,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $action = $_POST['action'];
 
-    if($action == 'update_service') {
-        $serviceId = $_POST['id'];
+    if($action == 'add_service') {
+
+        $image = $_FILES['image'];
+        $imageData = file_get_contents($image['tmp_name']);
         $nom = $_POST['nom'];
         $description = $_POST['description'];
         $prix = $_POST['prix'];
 
         try {
             $servicesDAO = new ServicesDAO();
-            $servicesDAO->updateService($serviceId, $nom, $description, $prix);
+            $servicesDAO->addService($nom, $description, $prix, $imageData);
 
             $url = "/connexion-" . $user['role_id'];
             header("Location: $url");
@@ -23,16 +25,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } catch (PDOException $e) {
             die("Error: " . $e->getMessage());
         }
-    } elseif ($action == 'delete_service') {
-
-        $serviceId = $_POST['id'];
-        $servicesDAO = new ServicesDAO();
-        $servicesDAO->deleteService($serviceId);
-
-        $url = "/connexion-" . $user['role_id'];
-        header("Location: $url");
-        exit();
-
     }
 }
 ?>

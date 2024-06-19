@@ -20,7 +20,7 @@ $user = $_SESSION['user'];
 
 <div class="bg-olive py-3">
     <div class="row justify-content-center mb-5">
-        <h2 class="text-center fs-1 font-rounded text-green pt-3">Découvrez Tous nos Habitats</h2>
+        <h2 class="text-center fs-1 font-rounded text-green pt-3">Mettre un Rapport sur les animaux</h2>
     </div>
     <div class="p-0">
         <?php foreach ($habitats as $habitat) : ?>
