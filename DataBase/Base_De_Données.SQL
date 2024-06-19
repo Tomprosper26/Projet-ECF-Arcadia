@@ -95,6 +95,14 @@ CREATE TABLE IF NOT EXISTS animal_image (
     FOREIGN KEY (animal_id) REFERENCES animal(id)
 );
 
+-- Création de la table 'horaires'
+CREATE TABLE IF NOT EXISTS horaires (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    jour VARCHAR(10) NOT NULL,
+    ouverture TIME NOT NULL,
+    fermeture TIME NOT NULL
+);
+
 -- Insertion des données : 
 
 -- Insérer des habitats
@@ -157,3 +165,13 @@ INSERT INTO animal_image (animal_id, image) VALUES
 (1, LOAD_FILE('path/to/animal1.jpg')),
 (2, LOAD_FILE('path/to/animal2.jpg')),
 (3, LOAD_FILE('path/to/animal3.jpg'));
+
+--Insérer les heures d'ouvertures
+INSERT INTO horaires (jour, ouverture, fermeture) VALUES
+('Lundi', '09:00:00', '18:00:00'),
+('Mardi', '09:00:00', '18:00:00'),
+('Mercredi', '09:00:00', '18:00:00'),
+('Jeudi', '09:00:00', '18:00:00'),
+('Vendredi', '09:00:00', '18:00:00'),
+('Samedi', '09:00:00', '18:00:00'),
+('Dimanche', '09:00:00', '18:00:00');

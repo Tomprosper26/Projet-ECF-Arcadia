@@ -5,6 +5,7 @@ require_once "../app/DAO/AvisDAO.php";
 require_once "../app/DAO/ServicesDAO.php";
 require_once "../app/DAO/AnimalDAO.php";
 require_once "../app/DAO/HabitatDAO.php";
+require_once "../app/DAO/HorairesDAO.php";
 
 class AdminController {
 
@@ -13,6 +14,7 @@ class AdminController {
     private $servicesDAO;
     private $animalDAO;
     private $habitatDAO;
+    private $horairesDAO;
 
     public function __construct() {
         $this->usersDAO = new UsersDAO();

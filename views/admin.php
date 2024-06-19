@@ -1,5 +1,6 @@
 <?php
 require "../app/FormControl/users.php";
+require "../app/FormControl/horaires.php";
 
 
 if (!isset($_SESSION['user']) || $_SESSION['user']['role_id'] != 1) {
@@ -53,7 +54,31 @@ $user = $_SESSION['user'];
     </div>
     <div class="col-md-6 col-sm-12">
         <h1 class="text-center">Modifier les horraires du parc</h1>
+        <div class="row justify-content-center mt-5">
+            <form class="col-8" action="" method="post">
+                <div class="form-group">
+                    <label for="jour">Jour</label>
+                    <select class="form-control" id="jour" name="jour" required>
+                        <option value="Lundi">Lundi</option>
+                        <option value="Mardi">Mardi</option>
+                        <option value="Mercredi">Mercredi</option>
+                        <option value="Jeudi">Jeudi</option>
+                        <option value="Vendredi">Vendredi</option>
+                        <option value="Samedi">Samedi</option>
+                        <option value="Dimanche">Dimanche</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="ouverture">Heure d'ouverture</label>
+                    <input type="time" class="form-control" id="ouverture" name="ouverture" required>
+                </div>
+                <div class="form-group">
+                    <label for="fermeture">Heure de fermeture</label>
+                    <input type="time" class="form-control" id="fermeture" name="fermeture" required>
+                </div>
+                <button type="submit" name="action" class="btn btn-primary my-2 border-0 shadow-lg" style="background-color: #3A5743;" value="update_horaires">Modifier</button>
+            </form>
+        </div>
     </div>
-</div>
 
 <?php require "components/employeFoot.php"; ?>

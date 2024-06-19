@@ -114,6 +114,16 @@ try {
     ";
     $pdo->exec($createAnimalImageTableSQL);
 
+    $createHorairesTableSQL = "
+    CREATE TABLE IF NOT EXISTS horaires (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        jour VARCHAR(10) NOT NULL,
+        ouverture TIME NOT NULL,
+        fermeture TIME NOT NULL
+    );
+    ";
+    $pdo->exec($createHorairesTableSQL);
+
 } catch (PDOException $e) {
     echo "Erreur : " . $e->getMessage();
 }

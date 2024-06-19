@@ -153,6 +153,20 @@ try {
         ]);
     }
 
+    $stmt = $pdo->prepare("INSERT INTO horaires (jour, ouverture, fermeture) VALUES (:jour, :ouverture, :fermeture)");
+    
+    $jours = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
+    $ouverture = '09:00:00';
+    $fermeture = '18:00:00';
+    
+    foreach ($jours as $jour) {
+        $stmt->execute([
+            'jour' => $jour,
+            'ouverture' => $ouverture,
+            'fermeture' => $fermeture
+        ]);
+    }
+
 } catch (PDOException $e) {
     echo "Erreur : " . $e->getMessage();
 }
