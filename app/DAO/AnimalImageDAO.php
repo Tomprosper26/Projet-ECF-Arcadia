@@ -10,8 +10,7 @@ class AnimalImageDAO extends DataBase {
         return $stmt->fetch();
     }
 
-    public function addImage($animal_id, $file_path) {
-        $imageData = file_get_contents($file_path);
+    public function addImage($animal_id, $imageData) {
         $stmt = $this->pdo->prepare("INSERT INTO animal_image (animal_id, image) VALUES (:animal_id, :image)");
         return $stmt->execute([
             'animal_id' => $animal_id,

@@ -6,6 +6,7 @@ require_once "../app/DAO/ServicesDAO.php";
 require_once "../app/DAO/AnimalDAO.php";
 require_once "../app/DAO/HabitatDAO.php";
 require_once "../app/DAO/HorairesDAO.php";
+require_once "../app/DAO/RaceDAO.php";
 
 class AdminController {
 
@@ -15,6 +16,7 @@ class AdminController {
     private $animalDAO;
     private $habitatDAO;
     private $horairesDAO;
+    private $raceDAO;
 
     public function __construct() {
         $this->usersDAO = new UsersDAO();
@@ -22,6 +24,7 @@ class AdminController {
         $this->servicesDAO = new ServicesDAO();
         $this->animalDAO = new AnimalDAO();
         $this->habitatDAO = new HabitatDAO();
+        $this->raceDAO = new RaceDAO();
     }
 
     public function render() {
@@ -36,6 +39,7 @@ class AdminController {
             $habitatImages[$habitatImg['id']] = $habitatImg['data'];
         }
         $animaldetails = $this->animalDAO->getAllAnimalsDetails();
+        $races = $this->raceDAO->getAllRaces();
         include "../views/admin.php";
     }
 

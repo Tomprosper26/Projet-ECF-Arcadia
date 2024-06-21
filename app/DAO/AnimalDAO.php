@@ -25,14 +25,13 @@ class AnimalDAO extends DataBase {
         ]);
     }
 
-    public function updateAnimal($id, $prenom, $etat, $habitat_id, $race_id) {
-        $stmt = $this->pdo->prepare("UPDATE animal SET prenom = :prenom, etat = :etat, habitat_id = :habitat_id, race_id = :race_id WHERE id = :id");
+    public function updateAnimal($id, $prenom, $etat, $habitat_id) {
+        $stmt = $this->pdo->prepare("UPDATE animal SET prenom = :prenom, etat = :etat, habitat_id = :habitat_id WHERE id = :id");
         return $stmt->execute([
             'id' => $id,
             'prenom' => $prenom,
             'etat' => $etat,
             'habitat_id' => $habitat_id,
-            'race_id' => $race_id
         ]);
     }
 
@@ -62,6 +61,12 @@ class AnimalDAO extends DataBase {
             'etat' => $etat,
             'id' => $id
         ]);
+    }
+
+    public function getAnimalByName($nom) {
+        $stmt = $this->pdo->prepare("SELECT * FROM animal WHERE prenom = :nom");
+        $stmt->execute(['nom' => $nom]);
+        return $stmt->fetch();
     }
 }
 ?>

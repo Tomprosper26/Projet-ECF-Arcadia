@@ -7,7 +7,7 @@
     <div class="p-0">
         <?php foreach ($habitats as $habitat) : ?>
             <a class="btn p-0 d-flex justify-content-center pb-0 mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#<?= $habitat['id'] ?>" aria-expanded="true">
-                <div class="card p-0 border-0 shadow-lg col-xl-6 col-md-8 col-sm-6 m-0" style="max-width: 100%;">
+                <div class="card p-0 border-0 shadow-lg col-xxl-6 col-xl-8 col-lg-8 col-md-8 col-sm-8 m-0" style="max-width: 100%;">
                     <div class="row g-0">
                         <div class="col-md-4 p-0">
                             <img src="data:image/jpeg;base64,<?php echo base64_encode($habitatImages[$habitat['id']]) ?>" class="card-img-top img-fluid rounded" style="width: 100%; height:100%" alt="image représentant la <?= $habitat['nom'] ?>">
@@ -29,12 +29,12 @@
                 </div>
             </a>
             <div class="d-flex justify-content-center my-0 py-0 mb-4 p-0 ">
-                <div class="collapse col-xl-6 col-md-8 col-sm-6 p-0" id="<?= $habitat['id'] ?>">
+                <div class="collapse col-xxl-6 col-xl-8 col-lg-8 col-md-8 col-sm-6 p-0" id="<?= $habitat['id'] ?>">
                     <div class="card card-body p-0 border border-0 rounded" style="background-color: #393424;">
                         <div class="d-flex justify-content-evenly row rounded py-3">
                             <?php foreach ($animaldetails as $animal) : ?>
                                 <?php if ($habitat['id'] == $animal['habitat_id']) : ?>
-                                    <div class="card p-0 col-md-3 col-sm-8 mt-2 mb-2 border border-0 shadow-lg">
+                                    <div class="card p-0 col-md-3 col-sm-8 mt-2 mb-2 border border-0 shadow-lg mb-2 mx-1">
                                         <img src="data:image/jpeg;base64,<?php echo base64_encode($animal['image']) ?>" class="card-img-top" alt="image de <?= $animal['label'] ?>">
                                         <div class="card-body">
                                             <h5 class="card-title text-center"><?= $animal['prenom'] ?></h5>

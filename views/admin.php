@@ -5,6 +5,8 @@ require "../app/FormControl/servicesUpdate.php";
 require "../app/FormControl/addservice.php";
 require "../app/FormControl/habitatupdate.php";
 require "../app/FormControl/addhabitat.php";
+require "../app/FormControl/animalupdate.php";
+require "../app/FormControl/addanimal.php";
 
 
 if (!isset($_SESSION['user']) || $_SESSION['user']['role_id'] != 1) {
@@ -228,8 +230,8 @@ $user = $_SESSION['user'];
     </div>
     <div class="p-0">
         <?php foreach ($habitats as $habitat) : ?>
-            <a class="btn p-0 d-flex justify-content-center pb-0 mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#<?= $habitat['id'] ?>" aria-expanded="true">
-                <div class="card p-0 border-0 shadow-lg col-xl-6 col-md-8 col-sm-6 m-0" style="max-width: 100%;">
+            <a class="btn p-0 d-flex justify-content-center pb-0 mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#habitat-<?= $habitat['id'] ?>" aria-expanded="true">
+                <div class="card p-0 border-0 shadow-lg col-xxl-6 col-xl-8 col-lg-8 col-md-8 col-sm-8 m-0" style="max-width: 100%;">
                     <div class="row g-0">
                         <div class="col-md-4 p-0">
                             <img src="data:image/jpeg;base64,<?php echo base64_encode($habitatImages[$habitat['id']]) ?>" class="card-img-top img-fluid rounded" style="width: 100%; height:100%" alt="image représentant la <?= $habitat['nom'] ?>">
@@ -251,51 +253,49 @@ $user = $_SESSION['user'];
                 </div>
             </a>
             <div class="d-flex justify-content-center my-0 py-0 p-0 ">
-                <div class="collapse col-xl-6 col-md-8 col-sm-6 p-0" id="<?= $habitat['id'] ?>">
+                <div class="collapse col-xxl-6 col-xl-8 col-lg-8 col-md-8 col-sm-6 p-0" id="habitat-<?= $habitat['id'] ?>">
                     <div class="card card-body p-0 border border-0 rounded" style="background-color: #393424;">
                         <div class="d-flex justify-content-evenly row rounded py-3">
                             <?php foreach ($animaldetails as $animal) : ?>
                                 <?php if ($habitat['id'] == $animal['habitat_id']) : ?>
-                                    <div class="card p-0 col-md-3 col-sm-8 mt-2 mb-2 border border-0 shadow-lg mb-2">
+                                    <div class="card p-0 col-md-3 col-sm-8 mt-2 mb-2 border border-0 shadow-lg mb-2 mx-1">
                                         <img src="data:image/jpeg;base64,<?php echo base64_encode($animal['image']) ?>" class="card-img-top" alt="image de <?= $animal['label'] ?>">
                                         <div class="card-body">
                                             <h5 class="card-title text-center"><?= $animal['prenom'] ?></h5>
                                             <p class="card-text text-center">santé : <?= $animal['etat'] ?></p>
                                             <div class="d-flex justify-content-center">
-                                                <button type="button" class="btn btn-primary border border-0" style="background-color: #393424;" data-bs-toggle="modal" data-bs-target="#<?= $animal['prenom'] ?>">
-                                                    Ecrire un rapport
+                                                <button type="button" class="btn btn-success border border-0" data-bs-toggle="modal" data-bs-target="#animal-<?= $animal['prenom'] ?>">
+                                                    Modifier
                                                 </button>
                                             </div>
-                                            <div class="modal fade mb-3" id="<?= $animal['prenom'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal fade mb-3" id="animal-<?= $animal['prenom'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered">
                                                     <div class="modal-content">
                                                         <div class="row d-flex justify-content-center">
                                                             <div class="modal-body">
                                                                 <div class="card p-0 mt-2 mb-2 border border-0 shadow-lg">
                                                                     <div class="card-body">
-                                                                        <h5 class="card-title text-center p-0"><?= $animal['prenom'] ?></h5>
-                                                                        <p class="card-text text-center p-0">dernier repas : <?= $animal['nourriture'] ?></p>
-                                                                        <p class="card-text text-center p-0">quantité : <?= $animal['quantity'] ?> gr</p>
                                                                         <form action="" method="post">
-                                                                            <input type="hidden" name="id" value="<?= $animal['id'] ?>">
+                                                                            <input type="hidden" name="prenom" value="<?= $animal['prenom'] ?>">
                                                                             <div class="mb-3">
-                                                                                <label for="nom" class="form-label">état de l'animal</label>
-                                                                                <input type="text" class="form-control" id="etat" name="etat" required>
+                                                                                <label for="etat" class="form-label">nom</label>
+                                                                                <input type="text" class="form-control" id="nom" name="nom" value="<?= $animal['prenom'] ?>" required>
                                                                             </div>
                                                                             <div class="mb-3">
-                                                                                <label for="nom" class="form-label">nourriture recommandée</label>
-                                                                                <input type="text" class="form-control" id="nourriture" name="nourriture" required>
+                                                                                <label for="nourriture" class="form-label">état</label>
+                                                                                <input type="text" class="form-control" id="etat" name="etat" value="<?= $animal['etat'] ?>" required>
                                                                             </div>
-                                                                            <div class="mb-3">
-                                                                                <label for="nom" class="form-label">quantité (gramme)</label>
-                                                                                <input type="text" class="form-control" id="quantity" name="quantity" required>
-                                                                            </div>
-                                                                            <div class="mb-3">
-                                                                                <label for="nom" class="form-label">commentaire sur l'animal</label>
-                                                                                <input type="text" class="form-control" id="commentaire" name="commentaire" required>
+                                                                            <label for="habitat" class="form-label">habitat</label>
+                                                                            <select class="form-select" id="habitat" name="habitat_id" required>
+                                                                                <?php foreach ($habitats as $habitate) : ?>
+                                                                                    <option value="<?= $habitate['id'] ?>"><?= htmlspecialchars($habitate['nom']) ?></option>
+                                                                                <?php endforeach ?>
+                                                                            </select>
+                                                                            <div class="container row justify-content-center p-3">
+                                                                                <button type="submit" name="action" class="btn btn-success col-6" value="update_animal">Enregistrer les modifications</button>
                                                                             </div>
                                                                             <div class="container row justify-content-center p-3">
-                                                                                <button type="submit" name="action" class="btn btn-success col-6" value="create_rapport">Enregistrer le rapport</button>
+                                                                                <button type="submit" name="action" class="btn btn-danger col-6" value="delete_animal">Supprimer l'animal</button>
                                                                             </div>
                                                                         </form>
                                                                     </div>
@@ -317,10 +317,10 @@ $user = $_SESSION['user'];
                 </div>
             </div>
             <div class="d-flex justify-content-center mt-2 mb-1">
-                <button type="button" class="btn btn-success border border-0" data-bs-toggle="modal" data-bs-target="#<?= $habitat['nom'] ?>">
+                <button type="button" class="btn btn-success border border-0" data-bs-toggle="modal" data-bs-target="#habitat-edit-<?= $habitat['id'] ?>">
                     Modifier l'habitat
                 </button>
-                <div class="modal fade" id="<?= $habitat['nom'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="habitat-edit-<?= $habitat['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="row d-flex justify-content-center">
@@ -335,7 +335,7 @@ $user = $_SESSION['user'];
                                                     <input type="text" class="form-control" id="nom" name="nom" value="<?= htmlspecialchars($habitat['nom']) ?>" required>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="nom" class="form-label">description</label>
+                                                    <label for="description" class="form-label">description</label>
                                                     <input type="text" class="form-control" id="description" name="description" value="<?= htmlspecialchars($habitat['description']) ?>" required>
                                                 </div>
                                                 <div class="container row justify-content-center p-3">
@@ -354,11 +354,10 @@ $user = $_SESSION['user'];
                 </div>
             </div>
             <div class="d-flex justify-content-center mb-3">
-                    <button type="button" class="btn btn-danger border border-0" data-bs-toggle="modal" data-bs-target="#<?= str_replace([" ", "'"], "", $habitat['description']) ?>">
-                        Supprimer l'habitat
-                    </button>
-                </div>
-                <div class="modal fade" id="<?= str_replace([" ", "'"], "", $habitat['description']) ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <button type="button" class="btn btn-danger border border-0" data-bs-toggle="modal" data-bs-target="#habitat-delete-<?= $habitat['id'] ?>">
+                    Supprimer l'habitat
+                </button>
+                <div class="modal fade" id="habitat-delete-<?= $habitat['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="row d-flex justify-content-center">
@@ -384,11 +383,13 @@ $user = $_SESSION['user'];
                         </div>
                     </div>
                 </div>
+            </div>
         <?php endforeach ?>
     </div>
 </div>
 
-<div class="pt-3 row justify-content-center mb-5">
+
+<div class="pt-3 row justify-content-center mb-1">
     <div class="d-flex justify-content-center mt-2">
         <button type="button" class="btn btn-success border border-0 fs-4" data-bs-toggle="modal" data-bs-target="#addhabitat">
             Ajouter un habitat
@@ -434,5 +435,76 @@ $user = $_SESSION['user'];
     </div>
 </div>
 
+<div class="pt-3 row justify-content-center mb-5">
+    <div class="d-flex justify-content-center mt-2">
+        <button type="button" class="btn btn-success border border-0 fs-4" data-bs-toggle="modal" data-bs-target="#addanimal">
+            Ajouter un animal
+        </button>
+    </div>
+    <div class="modal fade" id="addanimal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="row d-flex justify-content-center">
+                    <div class="modal-body">
+                        <div class="card p-0 mt-2 mb-2 border border-0 shadow-lg">
+                            <div class="card-body">
+                                <form action="" method="post" enctype="multipart/form-data">
+                                    <div class="mb-3">
+                                        <label for="nom" class="form-label">prénom</label>
+                                        <input type="text" class="form-control" id="nom" name="nom" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="description" class="form-label">état de l'animal</label>
+                                        <input class="form-control" id="etat" name="etat" rows="3" required>
+                                    </div>
+                                    <label for="habitat" class="form-label">habitat</label>
+                                    <select class="form-select mb-3" id="habitat" name="habitat_id" required>
+                                        <?php foreach ($habitats as $habitate) : ?>
+                                            <option value="<?= $habitate['id'] ?>"><?= htmlspecialchars($habitate['nom']) ?></option>
+                                        <?php endforeach ?>
+                                    </select>
+                                    <div class="form-group">
+                                        <label for="selectOptions">Choisissez une option :</label>
+                                        <select class="form-select" id="selectOptions" name="race">
+                                            <?php foreach ($races as $race) : ?>
+                                                <option value="<?= $race['id'] ?>"><?= htmlspecialchars($race['label']) ?></option>
+                                            <?php endforeach ?>
+                                            <option value="others">Autres</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group" id="otherTextInput" style="display: none;">
+                                        <label for="otherInput">créer une race :</label>
+                                        <input type="text" class="form-control" id="otherInput" name="race_create">
+                                    </div>
+                                    <div class="form-group mt-5">
+                                        <label for="image">Uploader une image</label>
+                                        <input type="file" class="form-control-file" id="image" name="image" required>
+                                    </div>
+                                    <div class="container row justify-content-center p-3">
+                                        <button type="submit" name="action" class="btn btn-success col-6" value="add_animal">Enregistrer et créer</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container row justify-content-center p-3">
+                        <button type="button" class="btn btn-secondary col-3" data-bs-dismiss="modal">Annulé</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('selectOptions').addEventListener('change', function() {
+        var otherTextInput = document.getElementById('otherTextInput');
+        if (this.value === 'others') {
+            otherTextInput.style.display = 'block';
+        } else {
+            otherTextInput.style.display = 'none';
+        }
+    });
+</script>
 
 <?php require "components/employeFoot.php"; ?>
