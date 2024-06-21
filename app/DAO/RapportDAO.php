@@ -47,6 +47,11 @@ class RapportDAO extends DataBase {
         $stmt = $this->pdo->prepare($sql);
         return $stmt->execute(['id' => $id]);
     }
+
+    public function getAllRapportDetails() {
+        $stmt = $this->pdo->query("SELECT rapport_veterinaire.*, animal.prenom FROM rapport_veterinaire LEFT JOIN animal ON animal.id = rapport_veterinaire.animal_id");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 
 ?>

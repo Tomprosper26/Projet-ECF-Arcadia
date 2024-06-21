@@ -11,6 +11,13 @@ require "../app/FormControl/rapport.php";
 
 $user = $_SESSION['user'];
 ?>
+
+<div class="col-md-5 col-sm-12">
+    <div class="d-flex justify-content-center">
+        <a class="nav-link font-rounded pt-4 mx-5" href="/"><p class="text-green">Retour Accueil<p></a>
+    </div>
+</div>
+
 <div class="col-md-7 col-sm-12">
     <div class="d-flex justify-content-end mx-3">
         <h1 class="text-center fs-4 text-green mt-3">Bienvenue, <?= $user['nom'] . " " . $user['prenom'] ?> (Veterinaire)</h1>

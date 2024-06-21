@@ -49,6 +49,11 @@ if ($requestPath === '/') {
     $VeterinaireController = new VeterinaireController();
     $router->addRoute('/connexion-3', 'VeterinaireController', 'render'); 
 
+} elseif ($requestPath === '/connexion-rapport') {
+
+    $RapportController = new AdminRapportController();
+    $router->addRoute('/connexion-rapport', 'AdminRapportController', 'render'); 
+
 } else {
     echo "page introuvable";
 }

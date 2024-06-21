@@ -9,10 +9,9 @@
 </head>
 <body>
 <div class="row bg-body-white">
-    <div class="col-md-5 col-sm-12">
+    <div class="col-md-4 col-sm-12">
         <div class="d-flex justify-content-start mx-3">
             <h1 class="text-center font-rounded mt-3"><div class="fs-4 text-green">ARCADIA</div><div class="fs-5 text-olive">Parc Zoologique</div></h1>
             <h2 class="text-center font-rounded mt-3 fs-4">Espace Employés</h2>
-            <a class="nav-link font-rounded pt-4 mx-5" href="/"><p class="text-green">Retour Accueil<p></a>
         </div>
     </div>
