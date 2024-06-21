@@ -14,6 +14,7 @@ class AdminRapportController {
     public function render() {
         $title = 'Arcadia-Admin-Rapport';
         $rapports = $this->rapportDAO->getAllRapportDetails();
+        $rapportDetailsJson = json_encode($rapports);
         include "../views/adminRapport.php";
     }
 

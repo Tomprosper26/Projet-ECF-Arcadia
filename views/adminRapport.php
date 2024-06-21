@@ -26,7 +26,35 @@ $user = $_SESSION['user'];
     </div>
 </div>
 
-<script> var rapportDetails = <?php echo $rapportDetailsJson; ?>; </script>
+<script id="rapportDetailsJson" type="application/json"><?php echo $rapportDetailsJson; ?></script>
 
+<div class="container my-5">
+    <h2 class="text-center mb-4">Rapports Vétérinaires</h2>
+    <form id="filterForm" class="mb-4">
+        <div class="row g-3">
+            <div class="col-md-4">
+                <label for="prenom" class="form-label">Prénom:</label>
+                <input type="text" class="form-control" id="prenom" name="prenom">
+            </div>
+            <div class="col-md-4">
+                <label for="startDate" class="form-label">Date de début:</label>
+                <input type="datetime-local" class="form-control" id="startDate" name="startDate">
+            </div>
+            <div class="col-md-4">
+                <label for="endDate" class="form-label">Date de fin:</label>
+                <input type="datetime-local" class="form-control" id="endDate" name="endDate">
+            </div>
+        </div>
+        <div class="row g-3 mt-3">
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-primary">Filtrer</button>
+            </div>
+        </div>
+    </form>
+
+    <div id="results" class="table-responsive">
+
+    </div>
+</div>
 
 <?php require "components/employeFoot.php"; ?>
