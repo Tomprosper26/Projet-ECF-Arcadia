@@ -12,11 +12,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($action == 'create_rapport') {
         
         $user_id = $user['username'];
-        $animal_id = $_POST['id'];
         $etat = $_POST['etat'];
         $nourriture = $_POST['nourriture'];
         $quantity = $_POST['quantity'];
         $commentaire = $_POST['commentaire'];
+        $animal_name = $_POST['prenom'];
+        $animalname = $AnimalDAO->getAnimalByName($animal_name);
+        $animal_id = $animalname['id'];
 
         $RapportDAO->insertRapport($nourriture, $quantity, $commentaire, $animal_id, $user_id);
         $AnimalDAO->updateAnimalEtat($etat, $animal_id);

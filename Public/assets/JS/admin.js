@@ -51,8 +51,8 @@ function displayResults(reports) {
 
     var thead = document.createElement('thead');
     var headerRow = document.createElement('tr');
-    var keys = ['Date', 'Nourriture', 'Grammage', 'Détail', 'Prenom', 'User_id'];
-    var headers = ['Date', 'Nourriture', 'Grammage', 'Détail de l\'etat de l\'animal', 'Auteur', 'Animal'];
+    var keys = ['Date', 'Nourriture', 'Grammage', 'Détail', 'Prenom', 'User_id', 'Etat'];
+    var headers = ['Date', 'Nourriture', 'Grammage', 'Détail de l\'etat de l\'animal', 'Auteur', 'Animal', 'etat'];
 
     headers.forEach(function(headerText) {
         var th = document.createElement('th');

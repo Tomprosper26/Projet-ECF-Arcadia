@@ -80,7 +80,7 @@ $user = $_SESSION['user'];
                                                                         <p class="card-text text-center p-0">dernier repas : <?= $animal['nourriture'] ?></p>
                                                                         <p class="card-text text-center p-0">quantité : <?= $animal['quantity'] ?> gr</p>
                                                                         <form action="" method="post">
-                                                                            <input type="hidden" name="id" value="<?= $animal['id'] ?>">
+                                                                            <input type="hidden" name="prenom" value="<?= $animal['prenom'] ?>">
                                                                             <div class="mb-3">
                                                                                 <label for="nom" class="form-label">état de l'animal</label>
                                                                                 <input type="text" class="form-control" id="etat" name="etat" required>
