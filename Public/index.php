@@ -29,32 +29,37 @@ if ($requestPath === '/') {
     $HabitatsController = new HabitatsController();
     $router->addRoute('/habitats', 'HabitatsController', 'render'); 
 
+}  elseif ($requestPath === '/contact') {
+
+    $ContactController = new ContactController();
+    $router->addRoute('/contact', 'ContactController', 'render');  
+
 }  elseif ($requestPath === '/connexion') {
 
     $ConnexionController = new ConnexionController();
     $router->addRoute('/connexion', 'ConnexionController', 'render'); 
 
-} elseif ($requestPath === '/connexion-1') {
+}  elseif ($requestPath === '/connexion-1') {
 
     $EmployeController = new AdminController();
     $router->addRoute('/connexion-1', 'AdminController', 'render'); 
 
-} elseif ($requestPath === '/connexion-2') {
+}  elseif ($requestPath === '/connexion-2') {
 
     $EmployeController = new EmployeController();
     $router->addRoute('/connexion-2', 'EmployeController', 'render'); 
 
-} elseif ($requestPath === '/connexion-3') {
+}  elseif ($requestPath === '/connexion-3') {
 
     $VeterinaireController = new VeterinaireController();
     $router->addRoute('/connexion-3', 'VeterinaireController', 'render'); 
 
-} elseif ($requestPath === '/connexion-rapport') {
+}  elseif ($requestPath === '/connexion-rapport') {
 
     $RapportController = new AdminRapportController();
     $router->addRoute('/connexion-rapport', 'AdminRapportController', 'render'); 
 
-} else {
+}  else {
     echo "page introuvable";
 }
 

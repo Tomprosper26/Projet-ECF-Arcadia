@@ -4,6 +4,7 @@ require_once "../app/DAO/AnimalDAO.php";
 require_once "../app/DAO/HabitatDAO.php";
 require_once "../app/DAO/ServicesDAO.php";
 require_once "../app/DAO/AvisDAO.php";
+require_once "../app/DAO/HorairesDAO.php";
 
 class HomeController {
 
@@ -11,12 +12,14 @@ class HomeController {
     private $habitatDAO;
     private $servicesDAO;
     private $avisDAO;
+    private $horairesDAO;
 
     public function __construct() {
         $this->animalDAO = new AnimalDAO();
         $this->habitatDAO = new HabitatDAO();
         $this->servicesDAO = new ServicesDAO();
         $this->avisDAO = new AvisDAO();
+        $this->horairesDAO = new HorairesDAO();
     }
 
     public function render() {
@@ -31,6 +34,7 @@ class HomeController {
             array_push($images, $image);
         }
         $avis = $this->avisDAO->getVisibleAvis();
+        $horaires = $this->horairesDAO->getAllHoraires();
 
         include "../views/home.php";
     }

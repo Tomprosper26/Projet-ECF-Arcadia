@@ -70,4 +70,13 @@
     </div>
 </div>
 
+<div class="container text-center mt-3 col-xxl-2 col-xl-5 col-lg-5 col-md-5 col-sm-6 ">
+    <ul class="list-group list-group-flush">
+        <?php foreach ($horaires as $horaire) :?>
+            <li class="list-group-item"><?= $horaire['jour'] ?> : <?= $horaire['ouverture'] ?> - <?= $horaire['fermeture'] ?></li>
+        <?php endforeach ?>
+    </ul>
+</div>
+
+
 <?php require "components/footer.php"; ?>
