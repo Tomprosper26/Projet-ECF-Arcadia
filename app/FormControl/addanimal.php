@@ -2,7 +2,7 @@
 require_once "../app/DAO/AnimalDAO.php";
 require_once "../app/DAO/AnimalImageDAO.php";
 require_once "../app/DAO/RaceDAO.php";
-require_once "../app/MongoDB/AnimalViews.php";
+include "../app/MongoDB/AnimalViews.php";
 $user = $_SESSION['user'];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
