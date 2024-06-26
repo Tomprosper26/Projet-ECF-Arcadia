@@ -44,7 +44,7 @@ require "components/header.php";
                                             <h5 class="card-title text-center"><?= $animal['prenom'] ?></h5>
                                             <p class="card-text text-center">santé : <?= $animal['etat'] ?></p>
                                             <div class="d-flex justify-content-center">
-                                                <button type="button" class="btn btn-primary border border-0" data-id="<?= $animal['id'] ?>" style="background-color: #393424;" data-bs-toggle="modal-animal" data-bs-target="#<?= $animal['prenom'] ?>">
+                                                <button type="button" class="btn btn-primary border border-0" data-id="<?= $animal['id'] ?>" style="background-color: #393424;" data-bs-toggle="modal" data-bs-target="#<?= $animal['prenom'] ?>">
                                                     Voir les détails
                                                 </button>
                                             </div>
