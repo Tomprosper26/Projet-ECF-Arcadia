@@ -1,5 +1,6 @@
 <?php require "components/header.php"; ?>
 
+
 <div class="bg-green py-4">
     <div class="row justify-content-center">
         <h2 class="text-center fs-1 font-rounded text-olive pb-2">Qui Sommes-nous?</h2>
