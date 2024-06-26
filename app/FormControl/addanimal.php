@@ -2,6 +2,7 @@
 require_once "../app/DAO/AnimalDAO.php";
 require_once "../app/DAO/AnimalImageDAO.php";
 require_once "../app/DAO/RaceDAO.php";
+require_once "../app/MongoDB/AnimalViews.php";
 $user = $_SESSION['user'];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -10,6 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $animalDAO = new AnimalDAO();
     $imageDAO = new AnimalImageDAO();
     $raceDAO = new RaceDAO();
+    $viewsDAO = new AnimalMongoDAO();
 
     if ($action == 'add_animal') {
         
@@ -29,6 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $animal = $animalDAO->getAnimalByName($prenom);
             $animal_id = $animal['id'];
             $imageDAO->addImage($animal_id, $imageData);
+            $viewsDAO->insertAnimal($animal_id, $prenom);
 
             $url = "/connexion-" . $user['role_id'];
             header("Location: $url");
@@ -40,6 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $animal = $animalDAO->getAnimalByName($prenom);
             $animal_id = $animal['id'];
             $imageDAO->addImage($animal_id, $imageData);
+            $viewsDAO->insertAnimal($animal_id, $prenom);
 
             $url = "/connexion-" . $user['role_id'];
             header("Location: $url");
