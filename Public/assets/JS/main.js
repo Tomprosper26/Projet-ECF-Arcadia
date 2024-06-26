@@ -43,7 +43,7 @@ if (isCurrentUrl('/habitats')) {
     }
     
     document.addEventListener('DOMContentLoaded', function() {
-        const buttons = document.querySelectorAll('button[data-bs-toggle="modal-animal"]');
+        const buttons = document.querySelectorAll('button[data-bs-toggle="modal"]');
         
         buttons.forEach(button => {
             button.addEventListener('click', function() {
