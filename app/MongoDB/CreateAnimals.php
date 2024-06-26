@@ -4,7 +4,7 @@ require_once 'AnimalViewsDAO.php';
 
 $animalViewsDAO = new AnimalMongoDAO();
 
-$animals = $animals = [
+$animals = [
     [
         'id' => 1,
         'prenom' => 'Leo',

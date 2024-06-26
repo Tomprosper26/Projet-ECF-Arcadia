@@ -10,7 +10,7 @@ class MongoDBConnection {
     private $db;
 
     public function __construct() {
-        $uri = 'mongodb+srv://tomprosper:5AvjPThpiIdFsUwc@arcadiazoo.5xfv2yl.mongodb.net/?appName=ArcadiaZoo';
+        $uri = 'mongodb+srv://tomprosper:Bv1tPjxw2dS3mL3q@arcadiazoo.5xfv2yl.mongodb.net/?appName=ArcadiaZoo';
         
         $options = [
             'serverSelectionTimeoutMS' => 5000,

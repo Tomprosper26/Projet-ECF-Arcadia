@@ -32,5 +32,26 @@ class AnimalMongoDAO {
         $animalCollection = $this->db->animals;
         return $animalCollection->findOne(['id' => $id]);
     }
+
+    public function getAllAnimalsWithViews() {
+        try {
+            $animalCollection = $this->db->animals;
+            $cursor = $animalCollection->find();
+            $animals = [];
+
+            foreach ($cursor as $document) {
+                $animals[] = [
+                    'id' => $document['id'],
+                    'prenom' => $document['prenom'],
+                    'viewCount' => $document['viewCount']
+                ];
+            }
+
+            return $animals;
+        } catch (Exception $e) {
+            echo 'Erreur lors de la récupération des animaux: ' . $e->getMessage();
+            return [];
+        }
+    }
 }
 ?>

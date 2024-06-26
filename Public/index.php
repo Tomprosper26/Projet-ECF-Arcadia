@@ -8,9 +8,6 @@ $router = new Router();
 
 $requestPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-var_dump($_SERVER['REQUEST_URI']);
-
-
 if ($requestPath === '/') {
 
     $HomeController = new HomeController();
@@ -61,7 +58,12 @@ if ($requestPath === '/') {
     $RapportController = new AdminRapportController();
     $router->addRoute('/connexion-rapport', 'AdminRapportController', 'render'); 
 
-}  else {
+}  elseif ($requestPath === '/connexion-dashboard') {
+
+    $DashboardController = new DashboardController();
+    $router->addRoute('/connexion-dashboard', 'DashboardController', 'render'); 
+
+} else {
     echo "page introuvable";
 }
 
