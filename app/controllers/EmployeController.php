@@ -28,7 +28,7 @@ class EmployeController {
         $services = $this->servicesDAO->getAllServices();
         $animals = $this->animalDAO->getAllAnimals();
         $habitats = $this->habitatDAO->getAllHabitats();
-        include "../views/Employe.php";
+        include "../views/employe.php";
     }
 
 }
