@@ -17,12 +17,33 @@ $user = $_SESSION['user'];
 </div>
 </div>
 
-<div class="col-md-12 col-sm-12 mt-2">
-    <div class="d-flex justify-content-center">
-        <a class="nav-link font-rounded pt-4 mx-5" href="/"><p class="text-green">Retour Accueil<p></a>
-        <a class="nav-link font-rounded pt-4 mx-5" href="/connexion-1"><p class="text-green">Gestion zoo<p></a>
-        <a class="nav-link font-rounded pt-4 mx-5" href="/connexion-rapport"><p class="text-green">Rapport Veterinaire<p></a>
-        <a class="nav-link font-rounded pt-4 mx-5" href="/connexion-dashboard"><p class="text-green">Dashboard<p></a>
+<div class="row bg-body-white">
+    <div class="col-md-12 col-sm-12">
+        <div class="d-flex justify-content-center">
+            <nav class="navbar navbar-expand-lg bg-body-white">
+                <div class="mt-md-3">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                            <ul class="navbar-nav">
+                                <li class="nav-item fs-6 mx-xxl-4 mx-xl-3">
+                                    <a class="nav-link font-rounded pt-4 mx-5" href="/"><p class="text-green">Retour Accueil<p></a>
+                                </li>
+                                <li class="nav-item fs-6 mx-xxl-4 mx-xl-3">
+                                    <a class="nav-link font-rounded pt-4 mx-5" href="/connexion-1"><p class="text-green">Gestion zoo<p></a>
+                                </li>
+                                <li class="nav-item fs-6 mx-xxl-4 mx-xl-3">
+                                    <a class="nav-link font-rounded pt-4 mx-5" href="/connexion-rapport"><p class="text-green">Rapport Veterinaire<p></a>
+                                </li>
+                                <li class="nav-item fs-6 mx-xxl-4 mx-xl-3">
+                                    <a class="nav-link font-rounded pt-4 mx-5" href="/connexion-dashboard"><p class="text-green">Dashboard<p></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+            </nav>
+        </div>
     </div>
 </div>
 
