@@ -12,7 +12,7 @@ class ConnexionController {
 
     public function render() {
         $title = 'Arcadia-Connexion';
-        include "../views/Connexion.php";
+        include "../views/connexion.php";
     }
 
 }
