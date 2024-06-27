@@ -12,7 +12,7 @@ class AvisController {
 
     public function render() {
         $title = 'Arcadia-Avis';
-        include "../views/Avis.php";
+        include "../views/avis.php";
     }
 
 }
