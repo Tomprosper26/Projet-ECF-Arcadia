@@ -10,10 +10,10 @@ require '../vendor/autoload.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $title = htmlentities($_POST['objet']);
-    $description = $_POST['description'];
+    $description = $_POST['commentaire'];
 
     $errors = [];
-    if (empty($email) || strlen($pseudo) < 5) {
+    if (empty($email)) {
         $errors[] = "Vous devez renseigner un email";
     }
     if (empty($description)) {
