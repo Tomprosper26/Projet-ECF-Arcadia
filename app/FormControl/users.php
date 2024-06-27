@@ -45,8 +45,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				$mail->isSMTP();
 				$mail->Host = 'mail.infomaniak.com';
 				$mail->SMTPAuth = true;
-				$mail->Username = "arcadiazoo@mayto.fr";
-				$mail->Password = "Dcaf3d446a";
+				$mail->Username = "";
+				$mail->Password = "";
 				$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
 				$mail->Port = 465;
 	
