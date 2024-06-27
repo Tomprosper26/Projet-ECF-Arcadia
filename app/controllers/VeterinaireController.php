@@ -27,7 +27,7 @@ class VeterinaireController {
             $habitatImages[$habitatImg['id']] = $habitatImg['data'];
         }
         $animaldetails = $this->animalDAO->getAllAnimalsDetails();
-        include "../views/Veterinaire.php";
+        include "../views/veterinaire.php";
     }
 
 }
