@@ -9,10 +9,10 @@ Le projet à besoin pour fonctionner d'une DB que vous pouvez crée en exécutan
 
 Ou en executant directement les commandes SQL contenues dans le fichiers "Database/Base_De_Données.SQL".
 
-n'oublié pas de modifier les informations de connexion dans chacun des fihciers php.
+n'oublié pas de modifier les informations de connexion dans chacun des fichiers php.
 
 Par la suite pour la conexion a la DB il vous suffit de renseigner vos informations de connexion dans 
-le fihcier "app/config.php".
+le fichier "app/config.php".
 
 Ce projet utilise aussi la DB MongoDB laquelle nécéssite l'utilisation du driver MongoDB que vous devrez installer selon votre version de php
 voir : "https://www.mongodb.com/docs/drivers/php-drivers/"
